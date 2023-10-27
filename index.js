@@ -24,7 +24,7 @@ app.use(cors({
 }));
 app.use("/image",express.static(path.join(__dirname,"./image")));
 app.use("/image2",express.static(path.join(__dirname,"./image/gameimg")));
-app.use(express.static(path.join(__dirname,"./game_project/build")));
+
 mongoose.connect('mongodb+srv://jkrowling:123@cluster0.gcyqs6j.mongodb.net/?retryWrites=true&w=majority',{dbName:"games"}).then(()=>{console.log("connected")})
 
   
@@ -42,8 +42,9 @@ app.use(wishlist_remove);
 app.use(brand);
 app.use(search);
 app.use(gamefind);
+app.use(express.static(path.join(__dirname,"./game_project/build")));
 app.get("*",(req,res)=>{
-    res.sendFile(path.join(__dirname,'build','index.html'));
+    res.sendFile(path.join(__dirname,"./game_project/build/index.html"));
 })
 app.listen(PORT,()=>{
     console.log("server is running")

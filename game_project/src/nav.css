@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+header{
+    height: 55px;
+    position: relative;
+    
+    color:white;
+    width: 100%;
+}
+.contai{
+    width: 100%;
+    
+}
+
+.fields>ul>li{
+    position: relative;
+    overflow: hidden;
+}
+.zim>a:after{
+    bottom: 0;
+    content: "";
+    display: block;
+    width: 0;
+    height: 3px;
+    
+    position: absolute;
+    transition: width 0.4s ease 0s ;
+    background:red;
+    
+}
+.gen>ul>li>a::after{
+    background: white;
+    
+}
+
+.gen{
+    border-top: 5px solid  white;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    
+   
+}
+.gen>ul>li{
+    
+    padding-left: 11px;
+}
+.gen>ul>li:hover{
+    color: red;
+}
+li>a:hover:after{
+    width: 100%;
+    
+}
+
+li>a:hover>i{
+    color: red;
+}
+@media (max-width:1026px) {
+    .contai>.fields{
+         box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);;
+        
+    }
+    
+}

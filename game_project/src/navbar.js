@@ -205,12 +205,12 @@ const Navbar=()=>{
    
    {(searchcon) && (<div className="absolute w-full  h-fit bg-white top-[100%] right-0">
                 
-                {(searchdata.length!=0) && (<>{(searchdata.map((arr,i)=>{return <div  className="w-full py-[10px] px-[5px]  flex border-b-2 border-black ">
+                {(searchdata.length!=0) && (<>{(searchdata.map((arr,i)=>{return <Link to={`/buy/${arr._id}`}> <div  className="w-full py-[10px] px-[5px]  flex border-b-2 border-black ">
                      <div className="card-img-cont relative w-fit shrink-0 rounded-[4px]  ">
-                    <img className=" w-[50px] h-[70px]   object-fit rounded-[2px] " src={`http://localhost:3001${arr.img}`}/>
+                    <img className=" w-[50px] h-[70px]   object-fit rounded-[2px] " src={`${arr.img}`}/>
                     </div>
                     <div className="text-[20px]  flex-1  flex  px-[7px] items-center text-black">{arr.name}</div>
-                </div>}))}
+                </div></Link>}))}
                 <div  className=" w-full h-[40px] bg-green-900 flex items-center justify-center" >
                        CLEAR
                 </div></>)}

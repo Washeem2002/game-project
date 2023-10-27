@@ -1,0 +1,47 @@
+@media screen and (width<560px) {
+    .game-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .game-image{
+        height:280px ;
+        width:200px ;
+    }
+    .dat{
+        width:200px ;
+    }
+  }
+  @media screen and (width<441px) {
+    .game-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 15px;
+    }
+    .game-image{
+        height:230px ;
+        width:155px ;
+    }
+    .dat{
+        width:155px ;
+    }
+  }
+  @media screen and (width<349px) {
+    .game-grid{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        column-gap: 15px;
+        margin: 0 5px 0 5px;
+    }
+    .game-image{
+        height:250px ;
+        width:180px ;
+    }
+    .dat{
+        max-width:180px ;
+        width: 100%;
+    }
+  }
+  @media screen and (width<1024px)
+  {
+    .gen2{
+        align-items: center;
+    }
+  }
+  

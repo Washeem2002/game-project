@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    
+}
+
+.supcontainer{
+    background-color: black;
+    align-items: center;
+}
+.supcontainer>.title{
+    font-size: large;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+.supcontainer>.sup-sub>.subcontainer>.lis{
+    
+    margin-left: 20px;
+    width:180px;
+}
+.subcontainer>.sup-sub{
+    transition: transform 0.5s ease;
+}
+.supcontainer>.sup-sub>.subcontainer>.imag>.detail{
+    background: linear-gradient(to bottom, transparent 0%, black 100%);
+
+}
+.supcontainer>.sup-sub>.subcontainer>.imag:hover>.detail{
+    display: block;
+    
+}
+.detail>h1{
+    background: transparent;
+}
+
+@media screen and (width<1050px) {
+ 
+.image-asp{
+    width: 700px;
+    height: 400px;
+}
+.discription>.dis-text{
+    padding-bottom: 10px ;
+}    
+ 
+  }
+  @media screen and (width<990px) {
+ 
+    .image-asp{
+        width: 500px;
+        height: 400px;
+    }    
+     
+      }
+      @media screen and (width<760px) {
+ 
+        .tim{
+            flex-direction: column-reverse;
+        }
+        .buy-detail{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            margin-bottom: 20px;
+        } 
+        .tim2{
+            max-width: 500px;
+        }
+         
+          }
+          @media screen and (width<500px) {
+ 
+            .imgt>.image-asp{
+                width: 100%;
+                height: auto;
+                aspect-ratio: 4/3;
+                
+            }    
+            .s>.profile>.icon{
+                width: 25px;
+                height: 25px;
+                font-size: 15px;
+            }
+            
+            .s>.profile>.name{
+                font-size: 15px;
+            }
+            .rate{
+                font-size: 15px;
+            }
+            .revew-detail{
+                padding-left: 32px;
+            }
+             
+             
+              }
+              @media screen and (width<382px) {
+ 
+                 
+                .s>.profile>.icon{
+                    width: 22px;
+                    height: 22px;
+                    font-size: 12px;
+                }
+                
+                .s>.profile>.name{
+                    font-size: 12px;
+                }
+                .rate{
+                    font-size: 12px;
+                }
+                .revew-detail{
+                    padding-left: 30px;
+                    margin-top: 6px;
+                }
+                 
+                 
+                  }
+              
+                  @media (max-width:888px)
+{
+    .supcontainer>.sup-sub>.subcontainer>.list>ul>li{
+        height: 54px;
+    }  
+}
+@media (max-width:790px) {
+    .supcontainer>.sup-sub>.subcontainer>.list{
+        display: none;
+    }  
+    .supcontainer>.sup-sub{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+ @media (max-width:570px)
+{    *{
+    padding: 0;
+}
+    .supcontainer>.sup-sub>.subcontainer>.imag>.t{
+    display: none;
+}
+.supcontainer>.sup-sub>.subcontainer{
+    
+    border-radius: 0;
+    padding: 10px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.supcontainer>.sup-sub>.subcontainer>.imag>.q{
+    display: block;
+}
+.imgt>img{
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+    
+}
+   
+    .supcontainer>.title{
+        margin-left: 20px;
+        font-size: 8px;
+    }
+} 
+@media (width<400px)
+{  
+.imgt>img{
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    
+}
+   
+    
+} 
+
+          
+

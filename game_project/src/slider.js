@@ -133,7 +133,7 @@ const Slide=()=>{
            {
             data.map((arr,i)=>{
                 return (<div ref={ref2} className="card-container  w-fit  pr-0 rounded-[4px] shrink-0 " style={{transform:`translateX(${set*100}%)`}}>
-                <div className="card-img-cont relative w-fit border-2 rounded-[4px] p-1">
+                <div className="card-img-cont relative w-fit border-2 rounded-[4px] pr-1">
                   <Link to={link2?`/buy/${arr._id}`:null}> <img className="w-[155px] h-[230px] sm:w-[200px] sm:h-[280px]  object-fit rounded-[2px]" src={`${arr.img}`} /></Link>
                      <div className="bye absolute w-full h-fit top-1 left-0 bg-transparent  rounded-[10px]">
                          <div className="bye-content top-0 relative bg-transparent w-full h-full">

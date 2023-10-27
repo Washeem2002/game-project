@@ -201,11 +201,11 @@ const Navbar=()=>{
             
             
         </div>
-   {(search) && (<form onSubmit={(e)=>{e.preventDefault();navigate(`/search?field=${searchvar}`)}}  className="search p-[3px] text-[15px] w-full  relative sm:text-lg block sm:hidden bg-white flex gap-2"><input type="email" placeholder="Search..." className="bg-white border-2 border-red-900 text-black text-sm h-[40px] rounded-lg focus:ring-blue-500 focus:border-blue-500   block w-full p-1.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none" onChange={(e)=>{searchfound(e)}} required></input><div className="w-[45px] h-[40px] border-2 rounded-lg border-slate-600 flex justify-center items-center text-black"><FontAwesomeIcon icon={faSearch} className="w-[20px] h-[20px]"></FontAwesomeIcon></div>
+   {(search) && (<form ref={menuref8} onSubmit={(e)=>{e.preventDefault();navigate(`/search?field=${searchvar}`)}}  className="search p-[3px] text-[15px] w-full  relative sm:text-lg block sm:hidden bg-white flex gap-2"><input type="text" placeholder="Search..." className="bg-white border-2 border-red-900 text-black text-sm h-[40px] rounded-lg focus:ring-blue-500 focus:border-blue-500   block w-full p-1.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none" onChange={(e)=>{searchfound(e)}} required></input><div className="w-[45px] h-[40px] border-2 rounded-lg border-slate-600 flex justify-center items-center text-black"><FontAwesomeIcon icon={faSearch} className="w-[20px] h-[20px]"></FontAwesomeIcon></div>
    
    {(searchcon) && (<div className="absolute w-full  h-fit bg-white top-[100%] right-0">
                 
-                {(searchdata.length!=0) && (<>{(searchdata.map((arr,i)=>{return <Link to={`/buy/${arr._id}`}> <div  className="w-full py-[10px] px-[5px]  flex border-b-2 border-black ">
+                {(searchdata.length!=0) && (<>{(searchdata.map((arr,i)=>{return <Link to={`/buy/${arr._id}`} onClick={()=>{setsearch(false);setsearchdata("")}}> <div  className="w-full py-[10px] px-[5px]  flex border-b-2 border-black ">
                      <div className="card-img-cont relative w-fit shrink-0 rounded-[4px]  ">
                     <img className=" w-[50px] h-[70px]   object-fit rounded-[2px] " src={`${arr.img}`}/>
                     </div>

@@ -50,7 +50,7 @@ app.post("/fetch",(req,res)=>{
       else
       {
         
-        game.find({genre:genre}).limit(10).then((result)=>{
+        game.find({ genre: { $all: genre }}).limit(10).then((result)=>{
           console.log(5);
             res.json(result);
         }).catch((err)=>{

@@ -20,7 +20,7 @@ const Buy=()=>{
     const[i,seti]=useState(0);
     const[data,setdata]=useState([]);
     const[imgdata,setimgdata]=useState([]);
-    const[gen,setgen]=useState("");
+    const[gen,setgen]=useState(null);
     useEffect(()=>{
       fetch("/api/gamefind",{
          method:"POST",
@@ -29,18 +29,7 @@ const Buy=()=>{
          },body:JSON.stringify({
            id
          })
-       }).then((res)=>{return res.json()}).then((res)=>{setdata(res);setimgdata(res.img2);return res}).then((res)=>{
-         
-         const tim=res.genre;
-         var st="";
-         for(var i=0;i<tim.length;i++)
-         {
-            st+=(tim[i]+",");
-         }
-         setgen(st)
-         
-         });
-       
+       }).then((res)=>{return res.json()}).then((res)=>{setdata(res);setimgdata(res.img2);setgen(res.genre)})
     },[id])
     const wishlish =(id)=>{
       setmass("Game added to the wishlist");
@@ -278,7 +267,7 @@ TEXT: Chinese - Simplified, Chinese - Traditional, Czech, Dutch, Greek, Hungaria
          </div>
          
         </div>
-        <Slide/>
+        {(gen!==null) && (<Slide genre={gen}/>)}
         </div>
     </div>
    

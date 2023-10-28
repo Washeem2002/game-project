@@ -130,9 +130,9 @@ const Home=()=>{
         </div>
     </div>
   
-    <Slide />
+    <Slide genre={"Game on Sale"}></Slide>
     <Brand/>
-    <Slide/>
+    <Slide genre={"Lowest of All"}/>
 
         </>
     )

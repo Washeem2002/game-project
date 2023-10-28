@@ -20,11 +20,8 @@ const Navbar=()=>{
     const menuref7=useRef(null);
     const menuref8=useRef(null);
     
-    if(window.innerWidth<1024)
-    {   
-        open=true;
-    }
-    const [on,seton]=useState(open);
+   
+    const [on,seton]=useState(false);
     const [on2,seton2]=useState(false);
     const [on3,seton3]=useState(false);
     const [on4,seton4]=useState(false);
@@ -48,9 +45,9 @@ const Navbar=()=>{
    
     useEffect(()=>{
         const t=(e)=>{
-            if(window.innerWidth<1024 && !on  && !ref.current.contains(e.target) && !menuref.current.contains(e.target))
+            if(window.innerWidth<1024 && on && !ref.current.contains(e.target) && !menuref.current.contains(e.target))
             {
-                seton(!on);
+                seton(false);
                 
                 
             }
@@ -136,7 +133,7 @@ const Navbar=()=>{
         <div className="contai flex flex-row flex-grow w-full  items-center ovetflow-scroll py-[3px] px-[5px] relative border-b border-gray-200 bg-white text-black">
             <div ref={menuref} className="option-hide block mr-4 lg:hidden" onClick={ope}><FontAwesomeIcon icon={faBars}></FontAwesomeIcon></div>
             <Link to="/" className="mr-6 flex-grow lg:flex-grow-0"><div className="logo  text-teal-600 text-[20px] items-center " >GAMECART</div></Link>
-          { (!on) &&( <div ref={ref} className="fields shrink-0 flex-grow absolute bg-white border-2 rounded-[4px] lg:border-0 lg:rounded-[0px] left-[0px] p-2  h-[90vh] lg:h-fit top-[37px] sm:top-[45px] z-40 bg-black min-w-[250px] lg:static lg:p-0 lg:min-h-full overflow-auto no-scrollbar">
+          { (on || window.innerWidth>1024) &&( <div ref={ref} className="fields shrink-0 flex-grow absolute bg-white border-2 rounded-[4px] lg:border-0 lg:rounded-[0px] left-[0px] p-2  h-[90vh] lg:h-fit top-[37px] sm:top-[45px] z-40 bg-black min-w-[250px] lg:static lg:p-0 lg:min-h-full overflow-auto no-scrollbar">
                 <ul className="flex flex-col shrink-0  text-lg/10 h-fit lg:flex-row">
                     
                     <li ref={menuref3} className="w-fit mb-3 lg:mr-5 lg:mb-0 zim" onClick={()=>{seton2(!on2)}}><a>Genre{on2===false?<FontAwesomeIcon icon={faChevronDown} className="ml-1 text-[15px]"/>:<FontAwesomeIcon icon={faChevronUp} className="ml-1 text-[15px]"/>}</a></li>

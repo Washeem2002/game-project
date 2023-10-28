@@ -41,6 +41,7 @@ const Buy=()=>{
        
     },[])
     const wishlish =(id)=>{
+      setmass("Game added to the wishlist");
       const data=JSON.parse(localStorage.getItem("tokken1"))._id;
 
       fetch("/api/wishlist",{
@@ -53,6 +54,7 @@ const Buy=()=>{
       })
     }
     const cart =(id)=>{
+      setmass("Game added to the cart");
       const data=JSON.parse(localStorage.getItem("tokken1"))._id;
 
       fetch("/api/cart",{

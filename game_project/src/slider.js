@@ -93,7 +93,7 @@ const Slide=({genre})=>{
 
     }
   useEffect(()=>{
-    alert(genre)
+    
     const data=localStorage.getItem('tokken1');
     if(data){
     fetch("/fetch",{

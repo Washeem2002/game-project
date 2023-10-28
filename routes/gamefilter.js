@@ -30,10 +30,15 @@ app.post('/game',(req,res)=>{
                       $subtract: [
                         "$price",
                         {
+
                           $divide: [
                             { $multiply: ["$price", "$discount"] },
                             100
                           ]
+
+
+
+
                         }
                       ]
                     }

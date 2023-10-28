@@ -211,9 +211,9 @@ const Navbar=()=>{
                     </div>
                     <div className="text-[20px]  flex-1  flex  px-[7px] items-center text-black">{arr.name}</div>
                 </div></Link>}))}
-                <div  className=" w-full h-[40px] bg-green-900 flex items-center justify-center" >
-                       CLEAR
-                </div></>)}
+                <button  className=" w-full h-[40px] bg-green-900 flex items-center justify-center" type="submit">
+                       Submit
+                </button></>)}
                 {
                   (searchdata.length===0) && (  <div  className=" w-full h-[40px]  flex items-center justify-center text-black" >
                     No search found

@@ -1,14 +1,14 @@
-import {React,useEffect,useState} from "react";
+import {React,useContext,useEffect,useState} from "react";
 import "./slide.css"
 import "./card.css"
 import "./game.css"
 import { useLocation,useHistory ,useSearchParams,Link} from "react-router-dom";
-
+import { Mycontext } from "./context/context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars,faChevronDown,faUser,faSearch,faCartShopping,faChevronUp,faPlus,faFilter} from "@fortawesome/free-solid-svg-icons";
 const Gameview=()=>{
-
+    const{mass,setmass}=useContext(Mycontext);
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     let [ asd,setSearchParams] = useSearchParams();
@@ -103,6 +103,7 @@ const Gameview=()=>{
      },[location])
       
      const cart =(id)=>{
+      setmass("Game added to the cart");
         const data=JSON.parse(localStorage.getItem("tokken1"))._id;
   
         fetch("/api/cart",{
@@ -115,6 +116,7 @@ const Gameview=()=>{
         })
       }
       const wishlist=(id)=>{
+        setmass("Game added to the wishlist");
         const data=JSON.parse(localStorage.getItem("tokken1"))._id;
   
         fetch("/api/wishlist",{

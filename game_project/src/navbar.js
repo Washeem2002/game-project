@@ -1,10 +1,13 @@
-import {React,useState,useRef, useEffect} from "react";
+import {React,useState,useRef, useEffect, useContext} from "react";
 import "./nav.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars,faChevronDown,faUser,faSearch,faCartShopping,faChevronUp} from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
+import { Mycontext } from "./context/context";
+import Toast from "./toast";
 const Navbar=()=>{
+    const {mass,setmass}=useContext(Mycontext);
     const navigate=useNavigate();
     let open=false;
     const ref=useRef(null);
@@ -86,8 +89,8 @@ const Navbar=()=>{
        seton3(false)
        seton4(false)
        
-
         
+       
     
         
 
@@ -188,7 +191,7 @@ const Navbar=()=>{
                 </div>)}</form>
             <div className="cart text-[15px] mr-[6px] sm:text-lg block sm:hidden" onClick={()=>{setsearch(!search)}}> <button className="  sm:border-2  px-[6px] py-[6px] sm:py-[7px] sm:px-[7px]  flex items-center text-[14px] rounded-full "><FontAwesomeIcon icon={faSearch} className="w-[20px] h-[20px] " ></FontAwesomeIcon><span></span></button></div>
             <Link to="/cart"><div className="cart text-[15px] mr-[6px] sm:text-lg "><button className="  sm:border-2  px-[6px] py-[6px] sm:py-[7px] sm:px-[7px]  flex items-center text-[14px] rounded-full "><FontAwesomeIcon icon={faCartShopping} className="w-[20px] h-[20px] " ></FontAwesomeIcon><span></span></button></div></Link>
-            <div className="cart text-[15px] sm:text-lg "><button ref={menuref6} className="  sm:border-2  px-[6px] py-[6px] sm:py-[7px] sm:px-[7px]  flex items-center text-[14px] rounded-full bg-black" onClick={acc}><FontAwesomeIcon icon={faUser} className="w-[20px] h-[20px] text-white" ></FontAwesomeIcon><span></span></button></div>
+            <div className="cart text-[15px] sm:text-lg " ><button ref={menuref6} className="  sm:border-2  px-[6px] py-[6px] sm:py-[7px] sm:px-[7px]  flex items-center text-[14px] rounded-full bg-black" onClick={acc}><FontAwesomeIcon icon={faUser} className="w-[20px] h-[20px] text-white" ></FontAwesomeIcon><span></span></button></div>
             { (on4) && (<div ref={menuref7} className=" min-w-[150px] pl-[4px] fields gen off_gen  bg-white absolute top-[40px] lg:top-[47px] right-0">
                         <ul className=" flex flex-col text-[20px]/10 ">
                         <li className="w-fit mb-3 lg:mr-5 " onClick={close}><Link to="/genra?gen=sega">Account</Link></li>
@@ -225,8 +228,9 @@ const Navbar=()=>{
    
    
    </form>)}
-     
+   <Toast></Toast>
     </header>
+   
     <div className=" h-[35px] sm:h-[50px] bg-black"></div>
     
     

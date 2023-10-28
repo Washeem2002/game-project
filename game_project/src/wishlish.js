@@ -1,6 +1,7 @@
-import {React,useEffect,useState} from "react";
-import "./slide.css"
-import "./card.css"
+import {React,useContext,useEffect,useState} from "react";
+import "./slide.css";
+import "./card.css";
+import { Mycontext } from "./context/context";
 
 
 
@@ -8,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark} from "@fortawesome/free-solid-svg-icons";
 
 const Wishlist=()=>{
+  const{mass,setmass}=useContext(Mycontext);
     const[data2,setdata2]=useState([])
    
     useEffect(()=>{
@@ -39,6 +41,7 @@ const Wishlist=()=>{
           })
         }).then((result)=>{return result.json()}).then((result)=>{if(result.status){
           setdata2((data2)=>data2.filter(item => item._id !== id));
+          setmass("Game is removed from wishlist");
         }})
         
         

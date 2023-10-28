@@ -1,6 +1,7 @@
 const Router=require("express");
 const app=Router();
 const User=require("../models/auth");
+
 app.post("/api/login",(req,res)=>{
     User.findOne({email:req.body.email,password:req.body.password},{_id:1} ).then((result)=>{ 
      

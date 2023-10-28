@@ -41,7 +41,7 @@ const Buy=()=>{
          
          });
        
-    },[])
+    },[id])
     const wishlish =(id)=>{
       setmass("Game added to the wishlist");
       const data=JSON.parse(localStorage.getItem("tokken1"))._id;

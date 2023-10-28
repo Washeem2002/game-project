@@ -7,6 +7,7 @@ import { Mycontext } from "./context/context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark} from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Wishlist=()=>{
   const{mass,setmass}=useContext(Mycontext);
@@ -60,12 +61,12 @@ const Wishlist=()=>{
               
               
                 return (<div  className="card-container  relative   rounded-[10px] shrink-0 flex bg-black border-2 p-3" >
-                <div className="card-img-cont relative w-fit shrink-0 rounded-[4px]  ">
+                <Link to={`/buy/${arr._id}`}> <div className="card-img-cont relative w-fit shrink-0 rounded-[4px]  ">
                     <img className=" w-[90px] h-[120px] sm:w-[150px] sm:h-[190px]  object-fit rounded-[2px] " src={`${arr.img}`} />
-                </div>
+                </div></Link>
                 <div className=" flex-1 flex flex-col">
-                     <div className="nam text-white text-[17px] font-[500] bg-transparent w-full px-3 text-ellipsis overflow-hidden ..."><span className=" text-sm sm:text-lg"> {arr.name}</span></div>
-                     <div className="pric flex items-center bg-transparent px-3 text-sm"><div className=" bg-transparent prices flex-grow flex gap-2 py-3"><div>{arr.discount}%</div><span className=" bg-transparent text-slate-400 line-through   font-[500] " >₹{arr.price}</span><span className="bg-transparent font-[500] text-white ">₹{arr.price-(arr.price*arr.discount/100)}</span></div></div>
+                <Link to={`/buy/${arr._id}`}> <div className="nam text-white text-[17px] font-[500] bg-transparent w-full px-3 text-ellipsis overflow-hidden ..."><span className=" text-sm sm:text-lg"> {arr.name}</span></div>
+                     <div className="pric flex items-center bg-transparent px-3 text-sm"><div className=" bg-transparent prices flex-grow flex gap-2 py-3"><div>{arr.discount}%</div><span className=" bg-transparent text-slate-400 line-through   font-[500] " >₹{arr.price}</span><span className="bg-transparent font-[500] text-white ">₹{arr.price-(arr.price*arr.discount/100)}</span></div></div></Link>
                     
         
                 </div>

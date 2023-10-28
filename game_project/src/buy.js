@@ -1,4 +1,4 @@
-import {React,useEffect,useState} from "react";
+import {React,useContext,useEffect,useState} from "react";
 
 import "./slide.css"
 import "./card.css"
@@ -8,11 +8,13 @@ import star from "./testim/star.jpg"
 import Slide from "./slider";
 import Brand from "./brand";
 import { useParams } from "react-router-dom";
+import { Mycontext } from "./context/context";
 
 
 
 
 const Buy=()=>{
+   const{mass,setmass}=useContext(Mycontext);
     const id=useParams();
     const[show,setshow]=useState(false);
     const[i,seti]=useState(0);

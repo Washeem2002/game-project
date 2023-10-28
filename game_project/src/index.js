@@ -6,6 +6,7 @@ import "./index.css";
 import Navbar from "./navbar";
 import ALLRoutes from "./Routes/allRoutes";
 import Login from "./login";
+import { Appcontext } from "./context/context";
 
 const App=()=>{
     
@@ -13,8 +14,10 @@ const App=()=>{
     return(
         <>
         <Router>
-        <Navbar/>
+        <Appcontext>
+      <Navbar/>
         <ALLRoutes/>
+        </Appcontext>
         </Router> 
         
          </> 

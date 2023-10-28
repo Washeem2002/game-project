@@ -1,7 +1,8 @@
-import {React,useEffect,useState} from "react";
-import "./slide.css"
-import "./card.css"
-import "./game.css"
+import {React,useContext,useEffect,useState} from "react";
+import "./slide.css";
+import "./card.css";
+import "./game.css";
+import { Mycontext } from "./context/context";
 
 
 
@@ -12,7 +13,7 @@ const BrandView=()=>{
 
     
     
-    
+    const{mass,setmass}=useContext(Mycontext);
    
      const {id}=useParams()
      const [data,setdata]=useState([]);
@@ -30,6 +31,7 @@ const BrandView=()=>{
      
       
      const cart =(id)=>{
+      setmass("Game added to the cart");
         const data=JSON.parse(localStorage.getItem("tokken1"))._id;
   
         fetch(`${process.env.REACT_APP_BASE_URL}/api/cart`,{
@@ -42,6 +44,7 @@ const BrandView=()=>{
         })
       }
       const wishlist=(id)=>{
+        setmass("Game added to the wishlist");
         const data=JSON.parse(localStorage.getItem("tokken1"))._id;
   
         fetch(`${process.env.REACT_APP_BASE_URL}/api/wishlist`,{

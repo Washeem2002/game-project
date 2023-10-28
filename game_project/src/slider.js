@@ -1,13 +1,13 @@
-import {React,useEffect,useState,useRef} from "react";
+import {React,useEffect,useState,useRef, useContext} from "react";
 import "./slide.css"
 import "./card.css"
-
+import { Mycontext } from "./context/context";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPlus,faCartShopping,faAngleLeft,faAngleRight} from "@fortawesome/free-solid-svg-icons";
 
 const Slide=()=>{
-     
+     const{mass,setmass}=useContext(Mycontext)
      const tim=[{name:"Dead Island 2",link:"https://cdn1.epicgames.com/offer/236c74b4cd2e4e3099cbe2ebdc9686fd/EGS_DeadIsland2_DeepSilverDambusterStudios_S2_1200x1600-efc5201842cf642eb45f73227cd0789b?h=480&quality=medium&resize=1&w=360"},{name:"Immortals Fenyx Rising Standard Edition",link:"https://cdn1.epicgames.com/4b35838425c74992ad42e1276b2161ca/offer/IFR_EPIC_STD_Store_Portrait_1200x1600_UK-1200x1600-160024289fd98b6a67a4dec9fadf9774.jpg?h=480&quality=medium&resize=1&w=360"},{name:"Valorant",link:"https://cdn1.epicgames.com/offer/cbd5b3d310a54b12bf3fe8c41994174f/EGS_VALORANT_RiotGames_S2_1200x1600-b911781672bac23a556586fb92c42983?h=480&quality=medium&resize=1&w=360"},{name:"RDR 2",link:"https://cdn1.epicgames.com/epic/offer/RDR2PC1227_Epic%20Games_860x1148-860x1148-b4c2210ee0c3c3b843a8de399bfe7f5c.jpg?h=480&quality=medium&resize=1&w=360"},{name:"Elden Ring",link:"https://fanatical.imgix.net/product/original/ef0033b4-d92b-43f6-9cec-c169d4e9a5cb.jpeg?auto=compress,format&w=360&fit=crop&h=480"},{name:"Last of Us 2",link:"https://cdn1.epicgames.com/offer/0c40923dd1174a768f732a3b013dcff2/EGS_TheLastofUsPartI_NaughtyDogLLC_S2_1200x1600-41d1b88814bea2ee8cb7986ec24713e0?h=480&quality=medium&resize=1&w=360"},{name:"Dishonored®: Death of the Outsider",link:"https://cdn1.epicgames.com/offer/87c84bc5f43d4fe69ad8f3ccde0594b0/EGS_DishonoredDeathoftheOutsider_ArkaneStudios_S2_1200x1600-acb1abddb047a40709f270fa623f1f02?h=480&quality=medium&resize=1&w=360"},{name:"Marvel’s Spider-Man: Miles Morales",link:"https://cdn1.epicgames.com/offer/f696430be718494fac1d6542cfb22542/EGS_MarvelsSpiderManMilesMorales_InsomniacGamesNixxesSoftware_S2_1200x1600-58989e7116de3f70a2ae6ea56ee202c6?h=480&quality=medium&resize=1&w=360"},{name:"Far Cry 6 Standard Edition",link:"https://cdn1.epicgames.com/b4565296c22549e4830c13bc7506642d/offer/TETRA_PREORDER_STANDARD%20EDITION_EPIC_Store_Portrait_1200x1600-1200x1600-ca8b802ff13813c37a44ebf68d0946a2.png?h=480&quality=medium&resize=1&w=360"},{name:"Gotham Knights",link:"https://cdn1.epicgames.com/offer/05057ec2d5ea43c3b0701cc1518e0577/EGS_GothamKnights_WarnerBrosGamesMontreal_S2_1200x1600-5a46b442e57afa637f013bbc09fe5487?h=480&quality=medium&resize=1&w=360"}]
                     
     // eslint-disable-next-line no-use-before-define
@@ -99,6 +99,7 @@ const Slide=()=>{
   },[])
     
     const cart =(id)=>{
+      setmass("Game added to the cart");
       const data=JSON.parse(localStorage.getItem("tokken1"))._id;
 
       fetch("/api/cart",{
@@ -111,6 +112,7 @@ const Slide=()=>{
       })
     }
     const wishlish =(id)=>{
+      setmass("Game added to the wishlist");
       const data=JSON.parse(localStorage.getItem("tokken1"))._id;
 
       fetch("/api/wishlist",{

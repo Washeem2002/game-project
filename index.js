@@ -2,6 +2,7 @@ const express=require("express");
 const mongoose=require("mongoose");
 const cors=require('cors');
 const path=require('path');
+require('dotenv').config();
 const fetch=require("./routes/fetch");
 const gamefilter=require("./routes/gamefilter");
 const register=require("./routes/register");
@@ -25,7 +26,7 @@ app.use(cors({
 app.use("/image",express.static(path.join(__dirname,"./image")));
 app.use("/image2",express.static(path.join(__dirname,"./image/gameimg")));
 
-mongoose.connect('mongodb+srv://jkrowling:123@cluster0.gcyqs6j.mongodb.net/?retryWrites=true&w=majority',{dbName:"games"}).then(()=>{console.log("connected")})
+mongoose.connect(process.env.MONGO_URL,{dbName:"games"}).then(()=>{console.log("connected")})
 
   
 

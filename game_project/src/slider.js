@@ -120,7 +120,7 @@ const Slide=({genre})=>{
       })
     }
     const wishlish =(id)=>{
-      setmass("Game added to the wishlist");
+      
       const data=JSON.parse(localStorage.getItem("tokken1"))._id;
 
       fetch("/api/wishlist",{
@@ -130,6 +130,11 @@ const Slide=({genre})=>{
         },body:JSON.stringify({
           data,id
         })
+      }).then((res)=>{return res.json()}).then((res)=>{
+        if(res.status)
+        {
+          setmass("Game is added to wishlist")
+        }
       })
     }
     

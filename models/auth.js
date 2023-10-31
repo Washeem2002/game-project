@@ -6,7 +6,8 @@ const User=new mongoose.Schema({
     address:{type:String,required:true},
     cart:{type:Array},
     wishlist:{type:Array},
-    buy:{type:Array}
+    buy:{type:Array},
+    buy2:[{"_id":String}]
 },{collection:"UserData"})
 const model=mongoose.model('UserData',User);
 module.exports=model

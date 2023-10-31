@@ -16,6 +16,8 @@ const wishlist_remove=require("./routes/wishlistremove");
 const brand=require("./routes/brand");
 const search=require("./routes/search");
 const gamefind=require("./routes/gamefind");
+const review=require("./routes/review");
+const buy=require("./routes/buy");
 const PORT=process.env.PORT || 3001;
 
 const app=express();
@@ -43,6 +45,8 @@ app.use(wishlist_remove);
 app.use(brand);
 app.use(search);
 app.use(gamefind);
+app.use(review);
+app.use(buy);
 app.use(express.static(path.join(__dirname,"./game_project/build")));
 app.get("*",(req,res)=>{
     res.sendFile(path.join(__dirname,"./game_project/build/index.html"));

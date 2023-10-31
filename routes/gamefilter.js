@@ -51,6 +51,7 @@ app.post('/game',(req,res)=>{
                     discountedPrice:{$lt:price}
                   }
                 },
+                {$project:{"review":0}},
                 {
                   $sort: { discountedPrice: t } // 1 for ascending order, -1 for descending
                 }
@@ -86,7 +87,8 @@ app.post('/game',(req,res)=>{
                 genre: { $all: quer },
                 discountedPrice:{$eq:0}
               }
-            }
+            },
+            {$project:{"review":0}},
           
           ]).then((result)=>{res.json(result)}).catch((err)=>{
             
@@ -114,7 +116,8 @@ app.post('/game',(req,res)=>{
                 genre: { $all: quer },
                 discountedPrice:{$lt:price}
               }
-            }
+            },
+            {$project:{"review":0}},
           
           ]).then((result)=>{
               console.log(1213)
@@ -160,6 +163,7 @@ app.post('/game',(req,res)=>{
           discountedPrice:{$lt:price}
         }
       },
+      {$project:{"review":0}},
       {
         $sort: { discountedPrice: t } // 1 for ascending order, -1 for descending
       }
@@ -193,7 +197,8 @@ app.post('/game',(req,res)=>{
             discountedPrice:{$eq:0},
             discountedPrice:{$lt:price}
           }
-        }
+        },
+        {$project:{"review":0}},
       
       ]).then((result)=>{res.json(result)}).catch((err)=>{
         console.log(err)
@@ -220,7 +225,8 @@ app.post('/game',(req,res)=>{
             
             discountedPrice:{$lt:price}
           }
-        }
+        },
+        {$project:{"review":0}},
       
       ]).then((result)=>{
         console.log(1213)

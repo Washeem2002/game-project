@@ -7,13 +7,14 @@ import {faUser,faStar,faChevronLeft,faChevronRight,faThumbsUp,faThumbsDown} from
 import star from "./testim/star.jpg"
 import Slide from "./slider";
 import Brand from "./brand";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { Mycontext } from "./context/context";
 
 
 
 
 const Buy=()=>{
+  const navigate=useNavigate();
    const{mass,setmass}=useContext(Mycontext);
     const id=useParams();
     const[show,setshow]=useState(false);
@@ -21,6 +22,11 @@ const Buy=()=>{
     const[data,setdata]=useState([]);
     const[imgdata,setimgdata]=useState([]);
     const[gen,setgen]=useState(null);
+    const[rview,setrview]=useState([]);
+    const[rate,setrate]=useState(0);
+
+
+    
     useEffect(()=>{
       fetch("/api/gamefind",{
          method:"POST",
@@ -29,7 +35,7 @@ const Buy=()=>{
          },body:JSON.stringify({
            id
          })
-       }).then((res)=>{return res.json()}).then((res)=>{setdata(res);setimgdata(res.img2);setgen(res.genre)})
+       }).then((res)=>{return res.json()}).then((res)=>{setdata(res);setimgdata(res.img2);setgen(res.genre);setrview(res.review);setrate(res.totalstar===0?0:Math.round(res.totalstar/res.totalreview))})
     },[id])
     const wishlish =(id)=>{
       setmass("Game added to the wishlist");
@@ -56,6 +62,23 @@ const Buy=()=>{
           data,id
         })
       })
+    };
+    
+    const buy=(id)=>{
+      const data=JSON.parse(localStorage.getItem("tokken1"))._id;
+      
+      fetch("/api/buy",{
+         method:"POST",
+         headers:{
+           'Content-Type':"application/json"
+         },body:JSON.stringify({
+           data,id
+         })
+       }).then((result)=>{return result.json()}).then((result)=>{
+         
+         if(result.status)
+         {setmass("Thank you for buying")}
+         })
     }
     
     
@@ -80,12 +103,12 @@ const Buy=()=>{
                <div className="sm:ml-2 flex-1">
                <div className="title  h-fit tracking-wide text-2xl font-semibold text-white ">{data.name}</div>
                <div className="Stars flex ">
-               <div className="star text-white mr-1"><FontAwesomeIcon icon={ faStar}   /></div>
-               <div className="star text-white mr-1"><FontAwesomeIcon icon={ faStar}   /></div>
-               <div className="star text-white mr-1"><FontAwesomeIcon icon={ faStar}   /></div>
-               <div className="star text-white mr-1"><FontAwesomeIcon icon={ faStar}   /></div>
-               <div className="star text-white mr-1"><FontAwesomeIcon icon={ faStar}   /></div>
-               <div className="star text-white ml-2  bg-teal-700 py-[2px] px-[4px] rounded">4.5</div>
+               <div className={`star ${rate>=1?"text-green-500":"text-white"} mr-1`}><FontAwesomeIcon icon={ faStar}   /></div>
+               <div className={`star ${rate>=2?"text-green-500":"text-white"} mr-1`}><FontAwesomeIcon icon={ faStar}   /></div>
+               <div className={`star ${rate>=3?"text-green-500":"text-white"} mr-1`}><FontAwesomeIcon icon={ faStar}   /></div>
+               <div className={`star ${rate>=4?"text-green-500":"text-white"} mr-1`}><FontAwesomeIcon icon={ faStar}   /></div>
+               <div className={`star ${rate>=5?"text-green-500":"text-white"} mr-1`}><FontAwesomeIcon icon={ faStar}   /></div>
+               <div className="star text-white ml-2  bg-teal-700 py-[1px] px-[6px] rounded">{rate}<FontAwesomeIcon icon={ faStar}   /></div>
 
                </div>
                 <div className="discription py-[2px]  ">
@@ -102,7 +125,7 @@ const Buy=()=>{
                <div className="sm:ml-2">
                   <div className="model p-[1px] text-[15px] h-fit w-fit bg-teal-800 rounded">Base game</div>
                   <div className="pric flex items-center bg-transparent"><div className=" bg-transparent prices flex-grow flex gap-2 "><span className=" bg-transparent text-slate-400 line-through   font-[200] " >₹{data.price}</span><span className="bg-transparent font-[200] text-white ">₹{data.price-(data.price*data.discount/100)}</span><span className="bg-transparent font-[200] px-2 text-white bg-teal-700 rounded">{data.discount}% </span></div></div>
-                  <button className=" w-full  text-center  static  mt-2 pt-[10px] pb-[10px] rounded font-[500] text-lg text-white border border-white-500 bg-blue-700">
+                  <button className=" w-full  text-center  static  mt-2 pt-[10px] pb-[10px] rounded font-[500] text-lg text-white border border-white-500 bg-blue-700" onClick={()=>{buy(data._id)}}>
                        BUY
                     </button>
                     <button  className=" w-full  text-center  static  mt-2 pt-[10px] pb-[10px]  rounded font-[500] text-lg text-white  border border-white-500" onClick={()=>{cart(data._id)}}>
@@ -155,109 +178,56 @@ TEXT: Chinese - Simplified, Chinese - Traditional, Czech, Dutch, Greek, Hungaria
          <div ><span className="text-white text-[20px]">Rating and Reviews</span></div>
          <div className="spec-detail w-full h-fit bg-neutral-900 mt-[10px]">
           <div className="pl-4 p-3 text-white text-m border-b-[2px] border-teal-5 w-full flex justify-between">
-          <div className="Stars flex text-sm">
-               <div className="star text-white mr-1"><FontAwesomeIcon icon={ faStar}   /></div>
-               <div className="star text-white mr-1"><FontAwesomeIcon icon={ faStar}   /></div>
-               <div className="star text-white mr-1"><FontAwesomeIcon icon={ faStar}   /></div>
-               <div className="star text-white mr-1"><FontAwesomeIcon icon={ faStar}   /></div>
-               <div className="star text-white mr-1"><FontAwesomeIcon icon={ faStar}   /></div>
-               <div className="star text-white ml-2  bg-teal-700 py-[2px] px-[4px] rounded">4.5</div>
+          <div className="Stars flex ">
+               <div className={`star ${rate>=1?"text-green-500":"text-white"} mr-1`}><FontAwesomeIcon icon={ faStar}   /></div>
+               <div className={`star ${rate>=2?"text-green-500":"text-white"} mr-1`}><FontAwesomeIcon icon={ faStar}   /></div>
+               <div className={`star ${rate>=3?"text-green-500":"text-white"} mr-1`}><FontAwesomeIcon icon={ faStar}   /></div>
+               <div className={`star ${rate>=4?"text-green-500":"text-white"} mr-1`}><FontAwesomeIcon icon={ faStar}   /></div>
+               <div className={`star ${rate>=5?"text-green-500":"text-white"} mr-1`}><FontAwesomeIcon icon={ faStar}   /></div>
+               <div className="star text-white ml-2  bg-teal-700 py-[1px] px-[6px] rounded">{rate}<FontAwesomeIcon icon={ faStar}   /></div>
 
                </div>
-               <a><button className="text-white ml-2  bg-teal-700 py-[2px] px-[4px] rounded">Rate product</button></a>
+               <a><button className="text-white ml-2  bg-teal-700 py-[2px] px-[4px] rounded" onClick={()=>{navigate(`/review?id=${data._id}&name=${data.name}&rate=${rate}`)}}>Rate product</button></a>
                
             
             
             </div>  
-         <div className="s flex p-[20px] m-[20px] flex-col text-white mt-3 mb-3 border-b-[5px] border-white">
+         {rview.map((arr,idx)=>{return (<div className="s flex p-[20px] m-[20px] flex-col text-white mt-3 mb-3 border-b-[5px] border-white">
             <div className="profile flex items-center  h-fit">
              <div className=" icon w-[40px] h-[40px] rounded-full bg-teal-900 text-[20px] relative"><FontAwesomeIcon icon={faUser} className=" icon2 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"></FontAwesomeIcon></div>
-             <div className=" name text-[19px] pl-[8px] my-auto">Mohd washeem</div>
-             <div className=" rate my-auto ml-[10px] text-[20px] px-[5px] bg-teal-900 rounded">4.5</div>
+             <div className=" name text-[19px] pl-[8px] my-auto">{arr.name}</div>
+             <div className=" rate my-auto ml-[10px] text-[20px] px-[5px] bg-teal-900 rounded">{arr.star}<FontAwesomeIcon icon={ faStar}   /></div>
 
             </div>
             <div className=" revew-detail w-full text-white pl-[48px] mt-[12px]   h-fit ">
              
-               <h2 className="mb-[5px] text-lg break-words font-bold">HELL yeh!</h2>
-               <div className="w-full overflow-hidden break-words">dfhjuksdfhuidsfhglkfhdsjlksdfffffffffffffffffffffffffffffffffffffffffffffffffffffff</div>
+               <h2 className="mb-[5px] text-lg break-words font-bold">{arr.title}</h2>
+               <div className="w-full overflow-hidden break-words">{arr.view}</div>
 
             </div >
             <div className=" revew-detail w-full text-white pl-[48px] mt-[12px] flex gap-[10px]  h-fit text-[15px] text-white-900">
-             <div>12/12/23</div>
-             <button><FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon> <span>500</span></button>
-             <button><FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon> <span>500</span></button>
+             <div>{arr.date}</div>
+             <button><FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon> <span>{arr.like}</span></button>
+             <button><FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon> <span>{arr.dislike}</span></button>
             </div >
+
+
+
+         </div>)})}
+         {
+          (rview.length===0)&&(
+            <div className="s flex p-[20px] m-[20px] flex-col text-white mt-3 mb-3 border-b-[5px] border-white">
+            
+           
+            <div className="w-full text-[25px]">Give a First Review</div>
 
 
 
          </div>
-         <div className="s flex p-[20px] m-[20px] flex-col text-white mt-3 mb-3 border-b-[5px] border-white">
-            <div className="profile flex items-center  h-fit">
-             <div className=" icon w-[40px] h-[40px] rounded-full bg-teal-900 text-[20px] relative"><FontAwesomeIcon icon={faUser} className=" icon2 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"></FontAwesomeIcon></div>
-             <div className=" name text-[19px] pl-[8px] my-auto">Mohd washeem</div>
-             <div className=" rate my-auto ml-[10px] text-[20px] px-[5px] bg-teal-900 rounded">4.5</div>
-
-            </div>
-            <div className=" revew-detail w-full text-white pl-[48px] mt-[12px]   h-fit ">
-             
-               <h2 className="mb-[5px] text-lg break-words font-bold">HELL yeh!</h2>
-               <div className="w-full overflow-hidden break-words">dfhjuksdfhuidsfhglkfhdsjlksdfffffffffffffffffffffffffffffffffffffffffffffffffffffff</div>
-
-            </div >
-            <div className=" revew-detail w-full text-white pl-[48px] mt-[12px] flex gap-[10px]  h-fit text-[15px] text-white-900">
-             <div>12/12/23</div>
-             <button><FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon> <span>500</span></button>
-             <button><FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon> <span>500</span></button>
-            </div >
-
-
-
-         </div>
-         <div className="s flex p-[20px] m-[20px] flex-col text-white mt-3 mb-3 border-b-[5px] border-white">
-            <div className="profile flex items-center  h-fit">
-             <div className=" icon w-[40px] h-[40px] rounded-full bg-teal-900 text-[20px] relative"><FontAwesomeIcon icon={faUser} className=" icon2 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"></FontAwesomeIcon></div>
-             <div className=" name text-[19px] pl-[8px] my-auto">Mohd washeem</div>
-             <div className=" rate my-auto ml-[10px] text-[20px] px-[5px] bg-teal-900 rounded">4.5</div>
-
-            </div>
-            <div className=" revew-detail w-full text-white pl-[48px] mt-[12px]   h-fit ">
-             
-               <h2 className="mb-[5px] text-lg break-words font-bold">HELL yeh!</h2>
-               <div className="w-full overflow-hidden break-words">dfhjuksdfhuidsfhglkfhdsjlksdfffffffffffffffffffffffffffffffffffffffffffffffffffffff</div>
-
-            </div >
-            <div className=" revew-detail w-full text-white pl-[48px] mt-[12px] flex gap-[10px]  h-fit text-[15px] text-white-900">
-             <div>12/12/23</div>
-             <button><FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon> <span>500</span></button>
-             <button><FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon> <span>500</span></button>
-            </div >
-
-
-
-         </div>
-         <div className="s flex p-[20px] m-[20px] flex-col text-white mt-3 mb-3 border-b-[5px] border-white">
-            <div className="profile flex items-center  h-fit">
-             <div className=" icon w-[40px] h-[40px] rounded-full bg-teal-900 text-[20px] relative"><FontAwesomeIcon icon={faUser} className=" icon2 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"></FontAwesomeIcon></div>
-             <div className=" name text-[19px] pl-[8px] my-auto">Mohd washeem</div>
-             <div className=" rate my-auto ml-[10px] text-[20px] px-[5px] bg-teal-900 rounded">4.5</div>
-
-            </div>
-            <div className=" revew-detail w-full text-white pl-[48px] mt-[12px]   h-fit ">
-             
-               <h2 className="mb-[5px] text-lg break-words font-bold">HELL yeh!</h2>
-               <div className="w-full overflow-hidden break-words">dfhjuksdfhuidsfhglkfhdsjlksdfffffffffffffffffffffffffffffffffffffffffffffffffffffff</div>
-
-            </div >
-            <div className=" revew-detail w-full text-white pl-[48px] mt-[12px] flex gap-[10px]  h-fit text-[15px] text-white-900">
-             <div>12/12/23</div>
-             <button><FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon> <span>500</span></button>
-             <button><FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon> <span>500</span></button>
-            </div >
-
-
-
-         </div>
-         <button  className=" w-full  text-center  static   pt-[10px] pb-[10px]  rounded font-[500] text-lg text-white  border border-white-500" >
+          )
+         }
+       
+         <button  className=" w-full  text-center  static   pt-[10px] pb-[10px]  rounded font-[500] text-lg text-white  border border-white-500" onClick={(e)=>{e.preventDefault();navigate(`/treview/${id.pid}`)}}>
                        View All Reviews
                     </button>
 

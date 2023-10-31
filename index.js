@@ -18,6 +18,7 @@ const search=require("./routes/search");
 const gamefind=require("./routes/gamefind");
 const review=require("./routes/review");
 const buy=require("./routes/buy");
+const buyknpw=require("./routes/buyknow");
 const PORT=process.env.PORT || 3001;
 
 const app=express();
@@ -47,6 +48,7 @@ app.use(search);
 app.use(gamefind);
 app.use(review);
 app.use(buy);
+app.use(buyknpw);
 app.use(express.static(path.join(__dirname,"./game_project/build")));
 app.get("*",(req,res)=>{
     res.sendFile(path.join(__dirname,"./game_project/build/index.html"));

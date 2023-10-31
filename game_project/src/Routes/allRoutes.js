@@ -11,6 +11,7 @@ import ResetScroll  from "../resetscroll";
 import SearchView from "../search";
 import Review from "../review";
 import FullReview from "../fullreview";
+import Buyknow from "../buyknow";
 const ALLRoutes=()=>{
     return(
         <>
@@ -27,6 +28,7 @@ const ALLRoutes=()=>{
             <Route path="/search" element={<SearchView></SearchView>}></Route> 
             <Route path="/review" element={<Review></Review>}></Route> 
             <Route path="/treview/:pid" element={<FullReview></FullReview>}></Route> 
+            <Route path="/buyknow" element={<Buyknow></Buyknow>}></Route>
 
          </Routes>
         </ResetScroll>

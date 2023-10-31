@@ -52,8 +52,8 @@ const FullReview=()=>{
     
        
      
-        <div className="tim2 subcontainer sm:max-w-[1109px] h-fit w-full pb-2 flex flex-col mt-[30px] mb-[25px] ">
-         <div className="w-full border-b-1 mb-2 flex justify-between"><div ><span className="text-white text-[25px]">{data.name}</span></div><div><span className="text-white text-[20px]">Rating and Reviews</span></div></div>
+        <div className="tim2 subcontainer sm:max-w-[1109px] h-fit w-full pb-2 flex flex-col sm:mt-[30px] sm:mb-[25px] ">
+         <div className="w-full border-b-1 mb-2 flex justify-between"><div ><span className="text-white text-[18px] sm:text-[25px]">{data.name}</span></div><div><span className="text-white text-[12] sm:text-[20px]">Rating and Reviews</span></div></div>
          
          <div className="spec-detail w-full h-fit bg-neutral-900 mt-[10px]">
           <div className="pl-4 p-3 text-white text-m border-b-[2px] border-teal-5 w-full flex justify-between">
@@ -72,20 +72,20 @@ const FullReview=()=>{
             
             </div>  
          {rview.map((arr,idx)=>{return (<div className="s flex p-[20px] m-[20px] flex-col text-white mt-3 mb-3 border-b-[5px] border-white">
-            <div className="profile flex items-center  h-fit">
-             <div className=" icon w-[40px] h-[40px] rounded-full bg-teal-900 text-[20px] relative"><FontAwesomeIcon icon={faUser} className=" icon2 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"></FontAwesomeIcon></div>
-             <div className=" name text-[19px] pl-[8px] my-auto">{arr.name}</div>
-             <div className=" rate my-auto ml-[10px] text-[20px] px-[5px] bg-teal-900 rounded">{arr.star}<FontAwesomeIcon icon={ faStar}   /></div>
+            <div className=" flex items-center  h-fit">
+             <div className=" w-[25px] h-[25px] sm:w-[40px] sm:h-[40px] rounded-full bg-teal-900 text-[12px] sm:text-[20px] relative"><FontAwesomeIcon icon={faUser} className="  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"></FontAwesomeIcon></div>
+             <div className="  text-[19px] pl-[8px] my-auto">{arr.name}</div>
+             <div className="  my-auto ml-[10px] text-[12px] sm:text-[20px] px-[5px] bg-teal-900 rounded">{arr.star}<FontAwesomeIcon icon={ faStar}   /></div>
 
             </div>
-            <div className=" revew-detail w-full text-white pl-[48px] mt-[12px]   h-fit ">
+            <div className=" revew-detail w-full text-white pl-[35px] mt-[12px]   h-fit ">
              
                <h2 className="mb-[5px] text-lg break-words font-bold">{arr.title}</h2>
-               <div className="w-full overflow-hidden break-words">{arr.view}</div>
+               <div className="w-full overflow-hidden break-words px-[10px]">{arr.view}</div>
 
             </div >
             <div className=" revew-detail w-full text-white pl-[48px] mt-[12px] flex gap-[10px]  h-fit text-[15px] text-white-900">
-             <div>{arr.date}</div>
+             <div>{((arr.date).split('T'))[0]}</div>
              <button><FontAwesomeIcon icon={faThumbsUp}></FontAwesomeIcon> <span>{arr.like}</span></button>
              <button><FontAwesomeIcon icon={faThumbsDown}></FontAwesomeIcon> <span>{arr.dislike}</span></button>
             </div >

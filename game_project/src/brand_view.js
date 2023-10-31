@@ -17,8 +17,7 @@ const BrandView=()=>{
    
      const {id}=useParams()
      const [data,setdata]=useState([]);
-     const  [act,setact]=useState(false);
-     const  [adv,setadv]=useState(false);
+     
      
      useEffect(()=>{
       fetch(`/api/brand?id=${id}`,{
@@ -34,7 +33,7 @@ const BrandView=()=>{
       setmass("Game added to the cart");
         const data=JSON.parse(localStorage.getItem("tokken1"))._id;
   
-        fetch(`${process.env.REACT_APP_BASE_URL}/api/cart`,{
+        fetch("/api/cart",{
           method:"POST",
           headers:{
             'Content-Type':"application/json"
@@ -47,7 +46,7 @@ const BrandView=()=>{
         setmass("Game added to the wishlist");
         const data=JSON.parse(localStorage.getItem("tokken1"))._id;
   
-        fetch(`${process.env.REACT_APP_BASE_URL}/api/wishlist`,{
+        fetch("/api/wishlist",{
           method:"POST",
           headers:{
             'Content-Type':"application/json"

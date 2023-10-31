@@ -81,7 +81,24 @@ const Cart=()=>{
 
       })
       
-     }
+     }; 
+      const buy=()=>{
+      const id="cart";
+      const data=JSON.parse(localStorage.getItem("tokken1"))._id;
+      
+      fetch("/api/buy",{
+         method:"POST",
+         headers:{
+           'Content-Type':"application/json"
+         },body:JSON.stringify({
+           data,id
+         })
+       }).then((result)=>{return result.json()}).then((result)=>{
+         
+        if(result.status)
+        {setmass("Thank you for buying")}
+        })
+    }
     
  
     
@@ -127,9 +144,9 @@ const Cart=()=>{
                     
                   
                     
-                    <div  className=" min-w-[150px] py-3  text-center text-lg static border-2 rounded-[4px] mt-5 ">
+                    <button className=" min-w-[150px] py-3  text-center text-lg static border-2 rounded-[4px] mt-5 " onClick={()=>{buy()}}>
                        CHECK OUT
-                    </div>
+                    </button>
                     
                 
         </div>

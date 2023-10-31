@@ -5,7 +5,7 @@ const game=require("../models/game");
 app.post("/api/wishlist",(req,res)=>{
   console.log(req.body)
   User.updateOne({_id:(req.body.data)},{$addToSet:{wishlist:req.body.id}}).then((result)=>{
-   
+   res.json({status:true})
   }).catch((err)=>{console.log(err)})
 // User.updateOne({ _id: new ObjectId(req.body.data) }, { $push:{cart:"cdsvxf"} });
 })

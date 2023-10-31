@@ -168,15 +168,15 @@ const Navbar=()=>{
         
            
             
-            <form ref={menuref8} onSubmit={(e)=>{e.preventDefault();navigate(`/search?field=${searchvar}`)}} className="search mr-[6px] text-[15px] w-[300px] relative sm:text-lg hidden sm:block"><input type="text" placeholder="Search..." className="bg-white border-2 border-red-900 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500   block w-full p-1.5 pr-[29px] dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none" onChange={(e)=>{searchfound(e)}}></input><FontAwesomeIcon icon={faSearch} className="w-[15px] h-[15px] absolute right-[10px] top-[50%] translate-y-[-50%] "></FontAwesomeIcon>
+            <form ref={menuref8} onSubmit={(e)=>{e.preventDefault();navigate(`/search?field=${searchvar}`);setsearchcon(false);searchdata([]);setsearchvar("")}} className="search mr-[6px] text-[15px] w-[300px] relative sm:text-lg hidden sm:block"><input type="text" placeholder="Search..." className="bg-white border-2 border-red-900 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500   block w-full p-1.5 pr-[29px] dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none" onChange={(e)=>{searchfound(e)}}></input><FontAwesomeIcon icon={faSearch} className="w-[15px] h-[15px] absolute right-[10px] top-[50%] translate-y-[-50%] "></FontAwesomeIcon>
            {(searchcon) && (<div className="absolute w-full  h-fit bg-white ">
                 
-                {(searchdata.length!=0) && (<>{(searchdata.map((arr,i)=>{return <Link to={`/buy/${arr._id}`}><div className="w-full py-[10px] px-[5px]  flex border-b-2 border-black ">
+                {(searchdata.length!=0) && (<>{(searchdata.map((arr,i)=>{return <div onClick={()=>{navigate(`/buy/${arr._id}`);setsearchcon(false);searchdata([]);setsearchvar("")}} className="w-full py-[10px] px-[5px]  flex border-b-2 border-black ">
                      <div className="card-img-cont relative w-fit shrink-0 rounded-[4px]  ">
                     <img className=" w-[50px] h-[70px]   object-fit rounded-[2px] " src={`${arr.img}`}/>
                     </div>
                     <div className="text-[20px]  flex-1  flex  px-[7px] items-center ">{arr.name}</div>
-                </div></Link>}))}
+                </div>}))}
                 <button  className=" w-full h-[40px] bg-green-900 flex items-center justify-center" type="submit">
                   Submit     
                 </button></>)}
@@ -201,11 +201,11 @@ const Navbar=()=>{
             
             
         </div>
-   {(search) && (<form ref={menuref8} onSubmit={(e)=>{e.preventDefault();navigate(`/search?field=${searchvar}`)}}  className="search p-[3px] text-[15px] w-full  relative sm:text-lg block sm:hidden bg-white flex gap-2"><input type="text" placeholder="Search..." className="bg-white border-2 border-red-900 text-black text-sm h-[40px] rounded-lg focus:ring-blue-500 focus:border-blue-500   block w-full p-1.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none" onChange={(e)=>{searchfound(e)}} required></input><div className="w-[45px] h-[40px] border-2 rounded-lg border-slate-600 flex justify-center items-center text-black"><FontAwesomeIcon icon={faSearch} className="w-[20px] h-[20px]"></FontAwesomeIcon></div>
+   {(search) && (<form ref={menuref8} onSubmit={(e)=>{e.preventDefault();navigate(`/search?field=${searchvar}`);setsearch(false);setsearchcon(false);searchdata([]);setsearchvar("")}}  className="search p-[3px] text-[15px] w-full  relative sm:text-lg block sm:hidden bg-white flex gap-2"><input type="text" placeholder="Search..." className="bg-white border-2 border-red-900 text-black text-sm h-[40px] rounded-lg focus:ring-blue-500 focus:border-blue-500   block w-full p-1.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none" onChange={(e)=>{searchfound(e)}} required></input><button className="w-[45px] h-[40px] border-2 rounded-lg border-slate-600 flex justify-center items-center text-black" ><FontAwesomeIcon icon={faSearch} className="w-[20px] h-[20px]"></FontAwesomeIcon></button>
    
    {(searchcon) && (<div className="absolute w-full  h-fit bg-white top-[100%] right-0">
                 
-                {(searchdata.length!=0) && (<>{(searchdata.map((arr,i)=>{return <Link to={`/buy/${arr._id}`} onClick={()=>{setsearch(false);setsearchdata("")}}> <div  className="w-full py-[10px] px-[5px]  flex border-b-2 border-black ">
+                {(searchdata.length!=0) && (<>{(searchdata.map((arr,i)=>{return <Link to={`/buy/${arr._id}`} onClick={()=>{setsearch(false);setsearchdata("");setsearchcon(false);}}> <div  className="w-full py-[10px] px-[5px]  flex border-b-2 border-black ">
                      <div className="card-img-cont relative w-fit shrink-0 rounded-[4px]  ">
                     <img className=" w-[50px] h-[70px]   object-fit rounded-[2px] " src={`${arr.img}`}/>
                     </div>

@@ -9,6 +9,8 @@ import BrandView from "../brand_view";
 import {Routes,Route} from "react-router-dom";
 import ResetScroll  from "../resetscroll";
 import SearchView from "../search";
+import Review from "../review";
+import FullReview from "../fullreview";
 const ALLRoutes=()=>{
     return(
         <>
@@ -23,6 +25,9 @@ const ALLRoutes=()=>{
             <Route path="/register" element={<Register></Register>}></Route>
             <Route path="/brand/:id" element={<BrandView></BrandView>}></Route>
             <Route path="/search" element={<SearchView></SearchView>}></Route> 
+            <Route path="/review" element={<Review></Review>}></Route> 
+            <Route path="/treview/:pid" element={<FullReview></FullReview>}></Route> 
+
          </Routes>
         </ResetScroll>
         

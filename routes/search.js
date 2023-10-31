@@ -16,7 +16,8 @@ app.post("/api/search",(req,res)=>{
           $match: {
             lowername: { $regex: req.body.field.toLowerCase() }
           }
-        }
+        },
+        {$project:{"review":0}},
       ]).limit(req.body.limit).then((result)=>{res.json(result)}).catch((err)=>{console.log(err)})
     
   })

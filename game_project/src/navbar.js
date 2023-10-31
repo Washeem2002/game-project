@@ -29,6 +29,7 @@ const Navbar=()=>{
     const [searchdata,setsearchdata]=useState([]);
     const [searchcon,setsearchcon]=useState(false);
     const [searchvar,setsearchvar]=useState("");
+    const [user,setuser]=useState(null);
     
     const ope=()=>{
        seton(!on);
@@ -93,14 +94,31 @@ const Navbar=()=>{
 
     }
     const acc=()=>{
-        const data=localStorage.getItem('tokken1')
+        const data=localStorage.getItem('tokken1');
+
         if(data)
+        {   
+            if(user===null)
+
+           { const id=JSON.parse(localStorage.getItem("tokken1"))._id;
+            fetch("/user",{
+                method:"POST",
+                headers:{
+                  'Content-Type':"application/json"
+                },body:JSON.stringify({
+                  id
+                })
+              }).then((res)=>{return res.json()}).then((res)=>{setuser(res);seton4(!on4);})
+            
+        }
+        else
         {
             seton4(!on4);
         }
-    }
+    }}
     const logout=()=>{
         seton4(false);
+        setuser(null);
         localStorage.clear('tokken1');
         navigate('/login')
     }
@@ -191,7 +209,8 @@ const Navbar=()=>{
             <div className="cart text-[15px] sm:text-lg " ><button ref={menuref6} className="  sm:border-2  px-[6px] py-[6px] sm:py-[7px] sm:px-[7px]  flex items-center text-[14px] rounded-full bg-black" onClick={acc}><FontAwesomeIcon icon={faUser} className="w-[20px] h-[20px] text-white" ></FontAwesomeIcon><span></span></button></div>
             { (on4) && (<div ref={menuref7} className=" min-w-[150px] pl-[4px] fields gen off_gen  bg-white absolute top-[40px] lg:top-[47px] right-0">
                         <ul className=" flex flex-col text-[20px]/10 ">
-                        <li className="w-fit mb-3 lg:mr-5 " onClick={close}>Account</li>
+                        <div className="w-full mb-3 lg:mr-5 text-black " >Hi! {user.name}</div>
+                        <div className="w-full mb-3 lg:mr-5 text-black border-b-[2px]" >{user.email}</div>
                         <li className="w-fit mb-3 lg:mr-5 " onClick={close}><Link to="/buyknow">Orders</Link></li>
                         <li className="w-fit mb-3 lg:mr-5 " onClick={close}><Link to="/wishlist">WishList</Link></li>
                         <li className="w-fit mb-3 lg:mr-5 " onClick={logout}>Logout</li>

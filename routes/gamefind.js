@@ -10,7 +10,7 @@ app.post("/api/gamefind",(req,res)=>{
    {
       game.findById({_id:(pid)},{"review":{$slice:5}}).then((result)=>{
          
-         console.log(result)
+         
           res.json(result);
       }).catch((err)=>{
         console.log(err);
@@ -20,7 +20,7 @@ app.post("/api/gamefind",(req,res)=>{
    {
       game.findById({_id:(pid)},{name:1,totalreview:1,totalstar:1,review:1,_id:1}).then((result)=>{
          
-         console.log(result)
+         
           res.json(result);
       }).catch((err)=>{
         console.log(err);

@@ -65,7 +65,7 @@ const Buy=()=>{
     };
     
     const buy=(id)=>{
-      const data=JSON.parse(localStorage.getItem("tokken1"))[0]._id;
+      const data=JSON.parse(localStorage.getItem("tokken1"))._id;
       
       fetch("/api/buy",{
          method:"POST",

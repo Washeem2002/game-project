@@ -59,9 +59,6 @@ var data=
     {"img2":["/image2/iratus-2.jpg","/image2/iratus-2.png","/image2/iratus-3.png"],"name":"Iratus: Lord of the Dead","price":3900,"discount":53,"dateofrel":453,"img":"/image/download-iratus--lord-of-the-dead-offer-1ucid.avif","publisher":"remedy","genre":["rpg"]},
     {"img2":["/image2/dyinglight-1-1.jpg","/image2/dyinglight-1-2.jpg","/image2/dyinglight-1-3.jpg"],"name":"Dying Light","price":2900,"discount":30,"dateofrel":453,"img":"/image/Dyinglight.avif","publisher":"remedy","genre":["adventure","horror","shooter"]},
     {"img2":["/image2/dyinglight-2-1.jpg","/image2/dyinglight-2-2.jpg","/image2/dyinglight-2-3.jpg"],"name":"Dying Light 2","price":2729,"discount":32,"dateofrel":453,"img":"/image/DYINGLIGHT2.avif","publisher":"remedy","genre":["adventure","horror","shooter"]},
-    {"img2":["/image2/fortnite-1.jpg","/image2/fortnite-2.jpg","/image2/fortnite-3.jpg"],"name":"Fortnite","price":0,"discount":0,"dateofrel":453,"img":"/image/fortnite.avif","publisher":"psyonic","genre":["shooter","action"],totalreview:0,totalstar:0,review:[]}
-    {"img2":["/image2/fortnite-1.jpg","/image2/fortnite-2.jpg","/image2/fortnite-3.jpg"],"name":"Fortnite","price":0,"discount":0,"dateofrel":453,"img":"/image/fortnite.avif","publisher":"psyonic","genre":["shooter","action"],totalreview:0,totalstar:0,review:[]}
-    {"img2":["/image2/hogwart-1.jpg","/image2/hogwart-2.jpg","/image2/hogwart-3.jpg"],"name":"Hogwart lagacy","price":3500,"discount":20,"dateofrel":453,"img":"/image/HogwartsLegacy.avif","publisher":"psyonic","genre":["adventure","action","horror","rpg"],totalreview:0,totalstar:0,review:[]}
     
     
     

@@ -9,7 +9,7 @@ app.post("/api/buy",(req,res)=>{
      {
         User.updateOne({_id:(req.body.data)},{$addToSet:{buy:req.body.id,"buy2":{_id:req.body.id}}}).then((result)=>{
             res.json({"status":result.acknowledged})
-           }).catch((err)=>{console.log(err)}) 
+           }).catch((err)=>{res.json({status:false})}) 
     
     }
     else
@@ -24,9 +24,9 @@ app.post("/api/buy",(req,res)=>{
         })
         User.updateOne({_id:(req.body.data)},{$addToSet:{buy:{ $each: result.cart },"buy2":{ $each: object }}}).then((result)=>{
             res.json({"status":result.acknowledged})
-           }).catch((err)=>{console.log()})
+           }).catch((err)=>{res.json({status:false})})
 
-       });
+       }).catch((err)=>{res.json({status:false})});
 
 
 

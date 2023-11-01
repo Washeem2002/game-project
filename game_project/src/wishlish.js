@@ -7,11 +7,12 @@ import { Mycontext } from "./context/context";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark,faStar} from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Wishlist=()=>{
   const{mass,setmass}=useContext(Mycontext);
-    const[data2,setdata2]=useState([])
+    const[data2,setdata2]=useState([]);
+    const navigate=useNavigate();
    
     useEffect(()=>{
         
@@ -24,7 +25,21 @@ const Wishlist=()=>{
           },body:JSON.stringify({
             user_id
           })
-        }).then((result)=>{return result.json()}).then((result)=>{setdata2(result)})
+        }).then((result)=>{return result.json()}).then((result)=>{
+        if(result===null)
+        {
+          localStorage.clear('tokken1');
+          setmass("invalid user..");
+            navigate("/login");
+        }
+        else
+        {
+          setdata2(result)
+        }
+        
+        
+        
+        })
 
        
      },[])

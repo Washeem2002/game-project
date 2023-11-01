@@ -7,14 +7,14 @@ import "./game.css"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping,faPlus} from "@fortawesome/free-solid-svg-icons";
-import { useParams,useSearchParams,useLocation } from "react-router-dom";
+import { useParams,useSearchParams,useLocation, useNavigate } from "react-router-dom";
 import { Mycontext } from "./context/context";
 const SearchView=()=>{
   const{mass,setmass}=useContext(Mycontext);
     let [ asd,setSearchParams] = useSearchParams();
     
     
-   
+   const navigate=useNavigate();
     const location = useLocation();
      const [data,setdata]=useState([]);
   
@@ -29,8 +29,8 @@ const SearchView=()=>{
       },[location])
      
       
-     const cart =(id)=>{
-      setmass("Game added to the cart");
+      const cart =(id)=>{
+        setmass("adding to the cart please wait..");
         const data=JSON.parse(localStorage.getItem("tokken1"))._id;
   
         fetch("/api/cart",{
@@ -40,10 +40,22 @@ const SearchView=()=>{
           },body:JSON.stringify({
             data,id
           })
+        }).then((resu)=>{return resu.json()}).then((resu)=>{
+          if(resu===null)
+          { 
+           
+            localStorage.clear('tokken1');
+            setmass("invalid user..");
+              navigate("/login");
+          }
+          else
+          {
+             setmass("Game added to the cart");
+          }
         })
       }
-      const wishlist=(id)=>{
-        setmass("Game added to the wishlist");
+      const wishlist =(id)=>{
+        
         const data=JSON.parse(localStorage.getItem("tokken1"))._id;
   
         fetch("/api/wishlist",{
@@ -53,6 +65,18 @@ const SearchView=()=>{
           },body:JSON.stringify({
             data,id
           })
+        }).then((res)=>{return res.json()}).then((res)=>{
+          if(res.status)
+          {
+            setmass("Game is added to wishlist");
+            
+          }
+          else
+          {
+            localStorage.clear('tokken1');
+            setmass("invalid user..");
+              navigate("/login");
+          }
         })
       }
    

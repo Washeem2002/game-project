@@ -12,9 +12,9 @@ app.post("/api/register",(req,res)=>{
       wishlist:[],
       buy:[],
       buy2:[]
-    }).then(()=>{ 
+    }).then((result)=>{ 
       
-      User.find({email:req.body.email},{_id:1}).then((result)=>{res.json({status:true,tokken1:result})})
+      User.findOne({email:req.body.email},{_id:1,name:1,email:1}).then((result)=>{res.json({status:true,tokken1:result})})
     
     
     }).catch((err)=>{ console.log(err);res.json({status:false,tokken:err})})

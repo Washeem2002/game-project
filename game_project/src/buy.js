@@ -37,22 +37,9 @@ const Buy=()=>{
          })
        }).then((res)=>{return res.json()}).then((res)=>{setdata(res);setimgdata(res.img2);setgen(res.genre);setrview(res.review);setrate(res.totalstar===0?0:Math.round(res.totalstar/res.totalreview))})
     },[id])
-    const wishlish =(id)=>{
-      setmass("Game added to the wishlist");
-      const data=JSON.parse(localStorage.getItem("tokken1"))[0]._id;
-
-      fetch("/api/wishlist",{
-        method:"POST",
-        headers:{
-          'Content-Type':"application/json"
-        },body:JSON.stringify({
-          data,id
-        })
-      })
-    }
     const cart =(id)=>{
-      setmass("Game added to the cart");
-      const data=JSON.parse(localStorage.getItem("tokken1"))[0]._id;
+      setmass("adding to the cart please wait..");
+      const data=JSON.parse(localStorage.getItem("tokken1"))._id;
 
       fetch("/api/cart",{
         method:"POST",
@@ -61,8 +48,45 @@ const Buy=()=>{
         },body:JSON.stringify({
           data,id
         })
+      }).then((resu)=>{return resu.json()}).then((resu)=>{
+        if(resu===null)
+        { 
+         
+          localStorage.clear('tokken1');
+          setmass("invalid user..");
+            navigate("/login");
+        }
+        else
+        {
+           setmass("Game added to the cart");
+        }
       })
-    };
+    }
+    const wishlish =(id)=>{
+      
+      const data=JSON.parse(localStorage.getItem("tokken1"))._id;
+
+      fetch("/api/wishlist",{
+        method:"POST",
+        headers:{
+          'Content-Type':"application/json"
+        },body:JSON.stringify({
+          data,id
+        })
+      }).then((res)=>{return res.json()}).then((res)=>{
+        if(res.status)
+        {
+          setmass("Game is added to wishlist");
+          
+        }
+        else
+        {
+          localStorage.clear('tokken1');
+          setmass("invalid user..");
+            navigate("/login");
+        }
+      })
+    }
     
     const buy=(id)=>{
       const data=JSON.parse(localStorage.getItem("tokken1"))._id;
@@ -78,7 +102,17 @@ const Buy=()=>{
          
          if(result.status)
          {setmass("Thank you for buying")}
-         })
+         else
+         {
+          localStorage.clear('tokken1');
+          setmass("invalid user..");
+            navigate("/login");
+         }
+
+         }
+         
+         
+         )
     }
     
     

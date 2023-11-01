@@ -18,7 +18,8 @@ const Cart=()=>{
      
      useEffect(()=>{
         
-        const id=JSON.parse(localStorage.getItem("tokken1"))._id;
+        const id=JSON.parse(localStorage.getItem("tokken1"))[0]._id;;
+        
   
         fetch("/api/cart_find",{
           method:"POST",
@@ -62,7 +63,7 @@ const Cart=()=>{
     
      const remove_cart=(id)=>{
       
-      const user_id=JSON.parse(localStorage.getItem("tokken1"))._id;
+      const user_id=(JSON.parse(localStorage.getItem("tokken1"))[0])._id;
       fetch("/api/cart_remove",{
         method:"POST",
         headers:{

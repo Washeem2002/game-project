@@ -15,7 +15,7 @@ const Wishlist=()=>{
    
     useEffect(()=>{
         
-        const user_id=JSON.parse(localStorage.getItem("tokken1"))._id;
+        const user_id=JSON.parse(localStorage.getItem("tokken1"))[0]._id;;
   
         fetch("/api/wishlist_find",{
           method:"POST",
@@ -32,7 +32,7 @@ const Wishlist=()=>{
     
     
      const remove_wishlist=(id)=>{
-        const user_id=JSON.parse(localStorage.getItem("tokken1"))._id;
+        const user_id=JSON.parse(localStorage.getItem("tokken1"))[0]._id;;
         fetch("/api/wishlist_remove",{
           method:"POST",
           headers:{

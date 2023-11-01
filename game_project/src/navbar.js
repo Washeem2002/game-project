@@ -98,16 +98,11 @@ const Navbar=()=>{
 
         if(data)
         {   
-            if(user===null)
-
-           { 
-            setuser(JSON.parse(localStorage.getItem("tokken1")));
+            
+            setuser(JSON.parse(localStorage.getItem("tokken1"))[0]);
            seton4(!on4);
-        }
-        else
-        {
-            seton4(!on4);
-        }
+        
+        
             
         }
         

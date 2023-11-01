@@ -29,7 +29,7 @@ const SearchView=()=>{
      
       
      const cart =(id)=>{
-        const data=JSON.parse(localStorage.getItem("tokken1"))._id;
+        const data=JSON.parse(localStorage.getItem("tokken1"))[0]._id;
   
         fetch("/api/cart",{
           method:"POST",
@@ -41,7 +41,7 @@ const SearchView=()=>{
         })
       }
       const wishlist=(id)=>{
-        const data=JSON.parse(localStorage.getItem("tokken1"))._id;
+        const data=JSON.parse(localStorage.getItem("tokken1"))[0]._id;
   
         fetch("/api/wishlist",{
           method:"POST",

@@ -106,9 +106,9 @@ const Slide=({genre})=>{
     }).then((resu)=>{return resu.json()}).then((resu)=>{setdata(resu)});}
   },[])
     
-    const cart =(id)=>{
-      setmass("Game added to the cart");
-      const data=JSON.parse(localStorage.getItem("tokken1"))._id;
+  const cart =(id)=>{
+    setmass("Game added to the cart");
+      const data=JSON.parse(localStorage.getItem("tokken1"))[0]._id;
 
       fetch("/api/cart",{
         method:"POST",

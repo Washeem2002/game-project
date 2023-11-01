@@ -30,7 +30,7 @@ const Review=()=>{
 
     const review=(e)=>{
         e.preventDefault();
-        const id1=JSON.parse(localStorage.getItem("tokken1"))._id;
+        const id1=JSON.parse(localStorage.getItem("tokken1"))[0]._id;
         
         const star=sstar; 
         

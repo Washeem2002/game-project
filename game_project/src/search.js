@@ -1,4 +1,4 @@
-import {React,useEffect,useState} from "react";
+import {React,useContext,useEffect,useState} from "react";
 import "./slide.css"
 import "./card.css"
 import "./game.css"
@@ -8,8 +8,9 @@ import "./game.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping,faPlus} from "@fortawesome/free-solid-svg-icons";
 import { useParams,useSearchParams,useLocation } from "react-router-dom";
+import { Mycontext } from "./context/context";
 const SearchView=()=>{
-
+  const{mass,setmass}=useContext(Mycontext);
     let [ asd,setSearchParams] = useSearchParams();
     
     
@@ -29,6 +30,7 @@ const SearchView=()=>{
      
       
      const cart =(id)=>{
+      setmass("Game added to the cart");
         const data=JSON.parse(localStorage.getItem("tokken1"))._id;
   
         fetch("/api/cart",{
@@ -41,6 +43,7 @@ const SearchView=()=>{
         })
       }
       const wishlist=(id)=>{
+        setmass("Game added to the wishlist");
         const data=JSON.parse(localStorage.getItem("tokken1"))._id;
   
         fetch("/api/wishlist",{

@@ -2,7 +2,7 @@ import {React,useEffect,useState,useRef, useContext} from "react";
 import "./slide.css"
 import "./card.css"
 import { Mycontext } from "./context/context";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -15,6 +15,7 @@ const Cart=()=>{
      const [data2,setdata2]=useState([]);
      const [price,setprice]=useState(0);
      const [actprice,setactprice]=useState(0);
+     const navigate=useNavigate();
      
      useEffect(()=>{
         
@@ -28,7 +29,19 @@ const Cart=()=>{
           },body:JSON.stringify({
             id
           })
-        }).then((result)=>{return result.json()}).then((result)=>{setdata2(result);
+        }).then((result)=>{return result.json()}).then((result)=>{
+          
+          if(result===null)
+          {
+            setmass("Invalid User..")
+            localStorage.clear('tokken1');
+            navigate("/login")
+            
+          }
+          else
+          {
+          
+          setdata2(result);}
          
         
         
@@ -98,6 +111,12 @@ const Cart=()=>{
          
         if(result.status)
         {setmass("Thank you for buying")}
+        else
+        {
+          localStorage.clear('tokken1');
+          setmass("invalid user..");
+            navigate("/login");
+        }
         })
     }
     

@@ -98,6 +98,26 @@ const Gameview=()=>{
          {
             setadv(true)
          }
+         else if(asd.get("gen")==="sport_racing ")
+         {
+            setadv(true)
+         }
+         else if(asd.get("gen")==="sport_racing")
+         {
+            setadv(true)
+         }
+         else if(asd.get("gen")==="shooter")
+         {
+            setsho(true)
+         }
+         else if(asd.get("gen")==="rpg")
+         {
+            setrpg(true)
+         }
+         else if(asd.get("gen")==="horror")
+         {
+            sethor(true)
+         }
          
          console.log(act)
      },[location])

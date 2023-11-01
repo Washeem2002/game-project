@@ -98,31 +98,13 @@ const Gameview=()=>{
          {
             setadv(true)
          }
-         else if(asd.get("gen")==="sport_racing")
-         {
-            setspt(true);
-         }
-         else if(asd.get("gen")==="shooter")
-         {
-              setsho(true);
-         }
-         else if(asd.get("gen")==="rpg")
-         {
-              setrpg(true);
-         }
-         else if(asd.get("gen")==="horror")
-         {
-               sethor(true);
-         }
-
-         
          
          console.log(act)
      },[location])
       
      const cart =(id)=>{
       setmass("Game added to the cart");
-        const data=JSON.parse(localStorage.getItem("tokken1"))[0]._id;
+        const data=JSON.parse(localStorage.getItem("tokken1"))._id;
   
         fetch("/api/cart",{
           method:"POST",
@@ -135,7 +117,7 @@ const Gameview=()=>{
       }
       const wishlist=(id)=>{
         setmass("Game added to the wishlist");
-        const data=JSON.parse(localStorage.getItem("tokken1"))[0]._id;
+        const data=JSON.parse(localStorage.getItem("tokken1"))._id;
   
         fetch("/api/wishlist",{
           method:"POST",

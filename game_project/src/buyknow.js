@@ -16,7 +16,7 @@ const Buyknow=()=>{
    
     useEffect(()=>{
         
-        const data=JSON.parse(localStorage.getItem("tokken1"))[0]._id;
+        const data=JSON.parse(localStorage.getItem("tokken1"))._id;
   
         fetch("/api/buyknow",{
           method:"POST",

@@ -18,7 +18,7 @@ const Cart=()=>{
      
      useEffect(()=>{
         
-        const id=JSON.parse(localStorage.getItem("tokken1"))[0]._id;;
+        const id=JSON.parse(localStorage.getItem("tokken1"));
         
   
         fetch("/api/cart_find",{

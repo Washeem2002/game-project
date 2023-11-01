@@ -3,7 +3,7 @@ const app=Router();
 
 const game=require("../models/game");
 app.post("/api/search",(req,res)=>{
-    console.log(req.body.field)
+    
     game.aggregate([
         {
           $addFields: {

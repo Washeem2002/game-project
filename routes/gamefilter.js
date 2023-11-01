@@ -56,8 +56,8 @@ app.post('/game',(req,res)=>{
                   $sort: { discountedPrice: t } // 1 for ascending order, -1 for descending
                 }
               ]).then((result)=>{
-                console.log(price)
-              console.log(1213);
+                
+              
               
               res.json(result);
             }).catch((err)=>{
@@ -120,7 +120,7 @@ app.post('/game',(req,res)=>{
             {$project:{"review":0}},
           
           ]).then((result)=>{
-              console.log(1213)
+              
               res.json(result);
             }).catch((err)=>{
               console.log(err)
@@ -168,7 +168,7 @@ app.post('/game',(req,res)=>{
         $sort: { discountedPrice: t } // 1 for ascending order, -1 for descending
       }
     ]).then((result)=>{
-        console.log(1213)
+     
     res.json(result);
   }).catch((err)=>{
     console.log(err)
@@ -229,7 +229,7 @@ app.post('/game',(req,res)=>{
         {$project:{"review":0}},
       
       ]).then((result)=>{
-        console.log(1213)
+        
         res.json(result);
       }).catch((err)=>{
         console.log(err)

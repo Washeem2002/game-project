@@ -9,7 +9,6 @@ app.post("/review",(req,res)=>{
    const star=req.body.star;
    const view=req.body.view;
 
-   console.log(pid)
    User.findOne({_id:req.body.id1,"buy2._id":pid}).then((user)=>{
     if(user!==null){
 
@@ -46,7 +45,7 @@ app.post("/review",(req,res)=>{
           
           
           
-          ).then((result)=>{console.log(result);res.json({status:"true"})})
+          ).then((result)=>{res.json({status:"true"})})
          }
          else
          {

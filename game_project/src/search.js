@@ -7,7 +7,7 @@ import "./game.css"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping,faPlus} from "@fortawesome/free-solid-svg-icons";
-import { useParams,useSearchParams,useLocation, useNavigate } from "react-router-dom";
+import { useParams,useSearchParams,useLocation, useNavigate,Link } from "react-router-dom";
 import { Mycontext } from "./context/context";
 const SearchView=()=>{
   const{mass,setmass}=useContext(Mycontext);
@@ -90,7 +90,7 @@ const SearchView=()=>{
             (data.map((arr,i)=>{
                 return (<div  className="card-container  w-full  rounded-[4px] shrink-0 flex flex-col justify-center items-center" >
                 <div className="card-img-cont relative w-fit border-2 rounded-[4px] p-1">
-                    <a ><img className="w-[155px] h-[230px] sm:w-[200px] sm:h-[280px]  object-fit rounded-[2px] game-image" src={`${arr.img}`}/></a>
+                <Link to={`/buy/${arr._id}`}><img className="w-[155px] h-[230px] sm:w-[200px] sm:h-[280px]  object-fit rounded-[2px] game-image" src={`${arr.img}`}/></Link>
                      <div className="bye absolute w-full h-fit top-1 left-0 bg-transparent  rounded-[10px]">
                          <div className="bye-content top-0 relative bg-transparent w-full h-full">
                            {(arr.discount!=0) &&(<div className="dicount bg-black absolute top-3 right-[-8px] p-[3px] text-lg text-[30px] text-white font-medium w-[80px] rounded-r-[3px] rounded-l-[3px] bg-opacity-[70%] flex justify-center">{arr.discount}%</div>)}

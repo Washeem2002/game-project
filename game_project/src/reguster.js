@@ -22,6 +22,7 @@ fetch("/api/register",{
 }).then((rsp)=>{return rsp.json()}).then((rsp)=>{
   
     if(rsp.status){
+      
       localStorage.setItem("tokken1",JSON.stringify(rsp.tokken1))
       console.log(localStorage.getItem("tokken1"));
       navigate("/login")

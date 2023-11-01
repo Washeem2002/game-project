@@ -100,22 +100,18 @@ const Navbar=()=>{
         {   
             if(user===null)
 
-           { const id=JSON.parse(localStorage.getItem("tokken1"))._id;
-            fetch("/user",{
-                method:"POST",
-                headers:{
-                  'Content-Type':"application/json"
-                },body:JSON.stringify({
-                  id
-                })
-              }).then((res)=>{return res.json()}).then((res)=>{setuser(res);seton4(!on4);})
-            
+           { 
+            setuser(JSON.parse(localStorage.getItem("tokken1")));
+           seton4(!on4);
         }
         else
         {
             seton4(!on4);
         }
-    }}
+            
+        }
+        
+    }
     const logout=()=>{
         seton4(false);
         setuser(null);

@@ -19,6 +19,7 @@ const Slide=({genre})=>{
     const [startX,setstartX]=useState(0);
     const [scrollleft,setscrollleft]=useState(0);
     const [move,setmove]=useState(0);
+    const[tch,settch]=useState(false);
     const ref=useRef();
     const ref2=useRef();
     const p=(e)=>{
@@ -52,7 +53,7 @@ const Slide=({genre})=>{
       {
         setlink2(false);
       }
-        setisDragging(false);
+        setisDragging(false)
         let t=0;
         if(ref.current.scrollLeft%ref2.current.offsetWidth>ref2.current.offsetWidth/2)
         {
@@ -66,6 +67,7 @@ const Slide=({genre})=>{
             left: ref.current.scrollLeft +t,
             behavior: 'smooth',
           });
+         
           
     }
     
@@ -163,10 +165,10 @@ const Slide=({genre})=>{
         <div className="gent  w-full sm:max-w-[1109px] mb-4 flex items-center bg-black"><div className="naam flex-1 text-[20px]">{genre}</div><div className="cross-buoon text-[10px]"><FontAwesomeIcon icon={faAngleLeft} className="text-[20px] btn bg-blue-700 py-[9px] px-[12px] rounded-[50%] mr-2 " onClick={right} /><FontAwesomeIcon icon={faAngleRight} className="text-[20px] bg-blue-700 py-[9px] px-[12px] rounded-[50%]" onClick={left}/></div></div> 
         
         
-        <div ref={ref}  onMouseDown={p} onMouseMove={q} onMouseUp={r} onMouseLeave={r}  className="conti-sub w-full sm:max-w-[1109px] flex gap-0 overflow-x-scroll no-scrollbar snap-x snap-mandatory sm:snap-none ">
+        <div ref={ref} onTouchStart={()=>{settch(true)}}  onMouseDown={tch?()=>{}:p} onMouseMove={tch?()=>{}:q} onMouseUp={tch?()=>{}:r} onMouseLeave={tch?()=>{}:r}  className={`conti-sub w-full sm:max-w-[1109px]  flex gap-0 overflow-x-scroll no-scrollbar ${tch?"snap-x snap-mandatory":""} ` } >
            {
             data.map((arr,i)=>{
-                return (<div ref={ref2} className="card-container  w-fit  pr-0 rounded-[4px] shrink-0 snap-start" >
+                return (<div ref={ref2} className={`card-container  w-fit  pr-0 rounded-[4px] shrink-0 ${tch?"snap-start":""} `} >
                 <div className="card-img-cont card-img-count-1 relative w-fit border-2 rounded-[4px] pr-1">
                   <Link to={link2?`/buy/${arr._id}`:null}> <img className="w-[155px] h-[230px] sm:w-[200px] sm:h-[280px]  object-fit rounded-[2px]" src={`${arr.img}`} /></Link>
                      <div className="bye absolute w-full h-fit top-1 left-0 bg-transparent  rounded-[10px]">

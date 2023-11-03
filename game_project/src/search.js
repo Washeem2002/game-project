@@ -100,7 +100,7 @@ const SearchView=()=>{
                     </div> 
                 </div>
                 <div className="dat w-full ">
-                     <a href="###"><div className="nam text-white text-[17px] font-[500] bg-transparent w-[150px] truncate "> {arr.name}</div></a>
+                     <div className="nam text-white text-[17px] font-[500] bg-transparent w-[150px] truncate "> {arr.name}</div>
                      <div className="pric flex items-center bg-transparent"><div className=" bg-transparent prices flex-grow flex flex-col"><span className="bg-transparent font-[500] text-white ">₹{arr.price}</span><span className="bg-transparent font-[500] text-white ">{(arr.price - arr.price*arr.discount/100)===0?"free":`₹${(arr.price - arr.price*arr.discount/100)}`}</span></div><button onClick={()=>{cart(arr._id)}} className="add-cart  w-[60px] h-[40px] bg-orange-400 p-2 text-center rounded-[4px] text-white-[400] text-[20px] font-[400]"><FontAwesomeIcon icon={faCartShopping} className="fa-solid fa-cart-shopping bg-transparent" /> </button></div>
                      
         

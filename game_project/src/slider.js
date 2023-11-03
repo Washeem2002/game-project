@@ -163,11 +163,11 @@ const Slide=({genre})=>{
         <div className="gent  w-full sm:max-w-[1109px] mb-4 flex items-center bg-black"><div className="naam flex-1 text-[20px]">{genre}</div><div className="cross-buoon text-[10px]"><FontAwesomeIcon icon={faAngleLeft} className="text-[20px] btn bg-blue-700 py-[9px] px-[12px] rounded-[50%] mr-2 " onClick={right} /><FontAwesomeIcon icon={faAngleRight} className="text-[20px] bg-blue-700 py-[9px] px-[12px] rounded-[50%]" onClick={left}/></div></div> 
         
         
-        <div ref={ref}  onMouseDown={p} onMouseMove={q} onMouseUp={r} onMouseLeave={r}  className="conti-sub w-full sm:max-w-[1109px] flex gap-0 overflow-hidden no-scrollbar ">
+        <div ref={ref}  onMouseDown={p} onMouseMove={q} onMouseUp={r} onMouseLeave={r}  className="conti-sub w-full sm:max-w-[1109px] flex gap-0 overflow-x-scroll no-scrollbar snap-x snap-mandatory sm:snap-none ">
            {
             data.map((arr,i)=>{
-                return (<div ref={ref2} className="card-container  w-fit  pr-0 rounded-[4px] shrink-0 " style={{transform:`translateX(${set*100}%)`}}>
-                <div className="card-img-cont relative w-fit border-2 rounded-[4px] pr-1">
+                return (<div ref={ref2} className="card-container  w-fit  pr-0 rounded-[4px] shrink-0 snap-start" >
+                <div className="card-img-cont card-img-count-1 relative w-fit border-2 rounded-[4px] pr-1">
                   <Link to={link2?`/buy/${arr._id}`:null}> <img className="w-[155px] h-[230px] sm:w-[200px] sm:h-[280px]  object-fit rounded-[2px]" src={`${arr.img}`} /></Link>
                      <div className="bye absolute w-full h-fit top-1 left-0 bg-transparent  rounded-[10px]">
                          <div className="bye-content top-0 relative bg-transparent w-full h-full">

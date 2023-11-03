@@ -85,7 +85,7 @@ const BrandView=()=>{
         <div className="conatiner-slider w-full flex flex-col h-full min-h-screen items-center  pt-[17px] overflow-hidden  text-white" >
         <div className="gent  w-full sm:max-w-[930px] my-2 sm:my-4 flex  bg-black"><div className="naam flex flex-1 text-[50px]  w-full justify-center "><div>Games</div></div></div>
         <div className='gent gen2  w-full sm:max-w-[1209px] h-full flex flex-col-reverse lg:flex-row lg:justify-center  gap-x-8 bg-black relative'>
-        <div  className="conti-sub w-fit h-fit lg:max-w-[909px]  grid grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 justify-center game-grid">
+        <div  className="conti-sub w-fit h-fit lg:max-w-[909px]  grid grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 justify-center game-grid" >
            {
             (data.map((arr,i)=>{
                 return (<div  className="card-container  w-full  rounded-[4px] shrink-0 flex flex-col justify-center items-center" >

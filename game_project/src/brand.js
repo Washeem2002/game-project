@@ -20,6 +20,7 @@ const Brand=()=>{
     const[link2,setlink2]=useState(false);
     const ref=useRef();
     const ref2=useRef();
+    const[sc,setsc]=useState(false)
     const p=(e)=>{
         setisDragging(true);
         setstartX(e.pageX-ref.current.offsetLeft);
@@ -97,11 +98,27 @@ const Brand=()=>{
           });
 
     }
+    const rt=(e)=>{
+      e.preventDefault();
+      let t=0;
+        if(ref.current.scrollLeft%ref2.current.offsetWidth>ref2.current.offsetWidth/2)
+        {
+          t=(ref2.current.offsetWidth-ref.current.scrollLeft%ref2.current.offsetWidth);
+        }
+        else
+        {
+          t=-1*(ref.current.scrollLeft%ref2.current.offsetWidth);
+        }
+        ref.current.scrollTo({
+            left: ref.current.scrollLeft +t,
+            behavior: 'smooth',
+          });
+    }
   
     return(
         <div className="container-ben w-full py-2 flex flex-col items-center  pb-5 text-white" onMouseMove={(e)=>{e.preventDefault()}}>
            <div className="gent  w-full sm:max-w-[1109px] mb-4 flex items-center "><div className="naam flex-1 text-[20px]">Official parteners</div><div className="cross-buoon text-[10px]"><FontAwesomeIcon icon={faAngleLeft} className="text-[20px] btn bg-blue-700 py-[9px] px-[12px] rounded-[50%] mr-2 "  onClick={right}   /><FontAwesomeIcon icon={faAngleRight} className="text-[20px] bg-blue-700 py-[9px] px-[12px] rounded-[50%]" onClick={left} /></div></div> 
-        <div ref={ref} onMouseDown={p} onMouseMove={q} onMouseUp={r} onMouseLeave={r}  className="ben-sub w-full max-w-[1109px] bg-black flex overflow-x-scroll no-scrollbar">
+        <div ref={ref} onMouseDown={p} onMouseMove={q} onMouseUp={r} onMouseLeave={r} onTouchEnd={(e)=>{sc?rt(e):console.log("false");setsc(false)}} onScrollCapture={(e)=>{setsc(true)}} className="ben-sub w-full max-w-[1109px] bg-black flex overflow-x-scroll no-scrollbar">
             {
                 data.map((idx)=>{
                    return(

@@ -18,8 +18,10 @@ const Brand=()=>{
     const [move,setmove]=useState(0);
     const[link,setlink]=useState(true);
     const[link2,setlink2]=useState(false);
+    const[tch,settch]=useState(false);
     const ref=useRef();
     const ref2=useRef();
+    
     const[sc,setsc]=useState(false)
     const p=(e)=>{
         setisDragging(true);
@@ -118,11 +120,11 @@ const Brand=()=>{
     return(
         <div className="container-ben w-full py-2 flex flex-col items-center  pb-5 text-white" onMouseMove={(e)=>{e.preventDefault()}}>
            <div className="gent  w-full sm:max-w-[1109px] mb-4 flex items-center "><div className="naam flex-1 text-[20px]">Official parteners</div><div className="cross-buoon text-[10px]"><FontAwesomeIcon icon={faAngleLeft} className="text-[20px] btn bg-blue-700 py-[9px] px-[12px] rounded-[50%] mr-2 "  onClick={right}   /><FontAwesomeIcon icon={faAngleRight} className="text-[20px] bg-blue-700 py-[9px] px-[12px] rounded-[50%]" onClick={left} /></div></div> 
-        <div ref={ref} onMouseDown={p} onMouseMove={q} onMouseUp={r} onMouseLeave={r}  className="ben-sub w-full max-w-[1109px] bg-black flex overflow-x-scroll no-scrollbar snap-x snap-mandatory sm:snap-none ">
+        <div ref={ref} onTouchStart={()=>{settch(true)}} onMouseDown={tch?()=>{}:p} onMouseMove={tch?()=>{}:q} onMouseUp={tch?()=>{}:r} onMouseLeave={tch?()=>{}:r}  className={`ben-sub w-full max-w-[1109px] bg-black flex overflow-x-scroll no-scrollbar ${tch?"snap-x snap-mandatory":""} `}>
             {
                 data.map((idx)=>{
                    return(
-                    <div ref={ref2} className="  logo w-[260px] h-[110px] relative pr-[10px] shrink-0 flex justify-center bg-white-800  border-3 border-blue-800 snap-start " >
+                    <div ref={ref2} className={` logo w-[260px] h-[110px] relative pr-[10px] shrink-0 flex justify-center bg-white-800  border-3 border-blue-800 ${tch?"snap-start":""} ` }>
                <Link to={link2?`/brand/${idx.name}`:null}> <div className="logo-size w-[240px] h-[110px] flex justify-center items-center bg-white rounded-[6px] "><img src={idx.logo} className="bg-transparent w-[130px] h-[30px]" alt="" /></div></Link>
                 
                 

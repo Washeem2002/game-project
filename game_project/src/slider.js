@@ -170,7 +170,7 @@ const Slide=({genre})=>{
             data.map((arr,i)=>{
                 return (<div ref={ref2} className={`card-container  w-fit  pr-0 rounded-[4px] shrink-0 ${tch?"snap-start":""} `} >
                 <div className="card-img-cont card-img-count-1 relative w-fit border-2 rounded-[4px] pr-1">
-                  <Link to={link2?`/buy/${arr._id}`:null}> <img className="w-[155px] h-[230px] sm:w-[200px] sm:h-[280px]  object-fit rounded-[2px]" src={`${arr.img}`} /></Link>
+                  <Link to={(link2 || tch)?`/buy/${arr._id}`:null}> < img className="w-[155px] h-[230px] sm:w-[200px] sm:h-[280px]  object-fit rounded-[2px]" src={`${arr.img}`} /></Link>
                      <div className="bye absolute w-full h-fit top-1 left-0 bg-transparent  rounded-[10px]">
                          <div className="bye-content top-0 relative bg-transparent w-full h-full">
                             {(arr.discount!==0) && (<div className="dicount bg-black absolute top-3 right-[-8px] p-[3px] text-lg text-[30px] text-white font-medium w-[80px] rounded-r-[3px] rounded-l-[3px] bg-opacity-[70%] flex justify-center">{arr.discount}%</div>)}

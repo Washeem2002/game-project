@@ -125,7 +125,7 @@ const Brand=()=>{
                 data.map((idx)=>{
                    return(
                     <div ref={ref2} className={` logo w-[260px] h-[110px] relative pr-[10px] shrink-0 flex justify-center bg-white-800  border-3 border-blue-800 ${tch?"snap-start":""} ` }>
-               <Link to={link2?`/brand/${idx.name}`:null}> <div className="logo-size w-[240px] h-[110px] flex justify-center items-center bg-white rounded-[6px] "><img src={idx.logo} className="bg-transparent w-[130px] h-[30px]" alt="" /></div></Link>
+               <Link to={(link2 || tch)?`/brand/${idx.name}`:null}> <div className="logo-size w-[240px] h-[110px] flex justify-center items-center bg-white rounded-[6px] "><img src={idx.logo} className="bg-transparent w-[130px] h-[30px]" alt="" /></div></Link>
                 
                 
             </div>

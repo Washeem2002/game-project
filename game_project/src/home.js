@@ -132,7 +132,9 @@ const Home=()=>{
   
     <Slide genre={"Game on Sale"}></Slide>
     <Brand/>
+    <Slide genre={"Most Popular"}/>
     <Slide genre={"Lowest of All"}/>
+    <Slide genre={"Most Liked"}/>
 
         </>
     )

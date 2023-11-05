@@ -48,8 +48,29 @@ app.post("/fetch",(req,res)=>{
             console.log(err)
         })
       }
+      else if(genre==="Most Liked")
+      {
+        console.log("most liked")
+        game.find({totalstar:{$gt:0}},{"review":0}).sort({totalstar:-1}).limit(10).then((result)=>{
+          
+          res.json(result);
+      }).catch((err)=>{
+          console.log(err)
+      })
+      }
+      else if(genre==="Most Popular")
+      {
+        console.log("Most Popular")
+        game.find({buy:{$gt:0}},{"review":0}).sort({buy:-1}).limit(10).then((result)=>{
+          
+          res.json(result);
+      }).catch((err)=>{
+          console.log(err)
+      })
+      }
       else
       {
+       
         
         game.find({ genre: { $all: genre }},{"review":0}).limit(10).then((result)=>{
           

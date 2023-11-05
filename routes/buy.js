@@ -8,7 +8,11 @@ app.post("/api/buy",(req,res)=>{
      if(req.body.id!="cart")
      {
         User.updateOne({_id:(req.body.data)},{$addToSet:{buy:req.body.id,"buy2":{_id:req.body.id}}}).then((result)=>{
-            res.json({"status":result.acknowledged})
+
+           game.updateOne({_id:req.body.id}, {$inc: { buy: 1 }}).then((result)=>{res.json({"status":result.acknowledged})}).catch((err)=>{console.log(err)})
+
+
+            
            }).catch((err)=>{res.json({status:false})}) 
     
     }
@@ -16,14 +20,17 @@ app.post("/api/buy",(req,res)=>{
     {
       // start
       
-       
+     
 
       User.findOne({_id:req.body.data},{cart:1}).then((result)=>{
         const object=(result.cart).map((value)=>{
             return {_id:value}
         })
-        User.updateOne({_id:(req.body.data)},{$addToSet:{buy:{ $each: result.cart },"buy2":{ $each: object }}}).then((result)=>{
-            res.json({"status":result.acknowledged})
+        User.updateOne({_id:(req.body.data)},{$addToSet:{buy:{ $each: result.cart },"buy2":{ $each: object }}}).then((resu)=>{
+
+           game.updateMany({_id:{$in:result.cart}},{$inc:{buy:1}}).then((result)=>{res.json({"status":result.acknowledged})}).catch((err)=>{res.json({status:false})})
+          
+            
            }).catch((err)=>{res.json({status:false})})
 
        }).catch((err)=>{res.json({status:false})});

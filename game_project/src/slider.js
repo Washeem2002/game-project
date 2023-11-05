@@ -159,8 +159,8 @@ const Slide=({genre})=>{
       })
     }
     
-    
-    return (
+    if(data.length>3)
+    {return (
         <div className="conatiner-slider w-full flex flex-col items-center pb-4 overflow-hidden text-white " onMouseMove={(e)=>{e.preventDefault()}}>
         <div className="gent  w-full sm:max-w-[1109px] mb-4 flex items-center bg-black"><div className="naam flex-1 text-[20px]">{genre}</div><div className="cross-buoon text-[10px]"><FontAwesomeIcon icon={faAngleLeft} className="text-[20px] btn bg-blue-700 py-[9px] px-[12px] rounded-[50%] mr-2 " onClick={right} /><FontAwesomeIcon icon={faAngleRight} className="text-[20px] bg-blue-700 py-[9px] px-[12px] rounded-[50%]" onClick={left}/></div></div> 
         
@@ -193,6 +193,6 @@ const Slide=({genre})=>{
         
         
     </div>
-    )
+    )}
 }
 export default Slide;

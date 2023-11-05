@@ -98,6 +98,7 @@ const Cart=()=>{
      }; 
       const buy=()=>{
       const id="cart";
+      setmass("please wait..");
       const data=JSON.parse(localStorage.getItem("tokken1"))._id;
       
       fetch("/api/buy",{

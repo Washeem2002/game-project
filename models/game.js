@@ -21,7 +21,8 @@ const game=new mongoose.Schema({
     "img": {type:String},
     "publisher":{type:String},
     "genre":{type:Array},
-    "review":[review]
+    "review":[review],
+    "buy":{type:Number,default:0}
   },{collection:"game-data"});
   const model=mongoose.model('game-data',game);
 module.exports=model

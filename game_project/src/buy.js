@@ -126,8 +126,8 @@ const Buy=()=>{
             <div className="imag w-fit  h-fit overflow-hidden  relative sm:rounded-[20px] relative shrink-0"  >
            
                  <div className="imgt h-full overflow-hidden  "><img src={`${imgdata[i]}`}  className="image-asp w-[800px] max-h-[450px]" alt=""/></div> 
-                <div className="absolute h-full bg-transparent top-[50%] translate-y-[-50%] w-[60px] " onClick={(e)=>{e.preventDefault();seti((i-1)<0?imgdata.length-1:i-1)}} ><div className="relative w-full h-full bg-transparent text-white text-[35px]"><div className="absolute top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%]"><FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon></div></div></div>
-                <div className="absolute h-full bg-transparent top-[50%] translate-y-[-50%] w-[60px] right-[0]" onClick={(e)=>{e.preventDefault();seti((i+1)%(imgdata.length))}}><div className="relative w-full h-full bg-transparent text-white text-[35px]"><div className="absolute top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%]"><FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon></div></div></div>
+                <div className="absolute h-full bg-transparent top-[50%] translate-y-[-50%] w-[60px] " onClick={(e)=>{e.preventDefault();seti((i-1)<0?imgdata.length-1:i-1)}} ><div className="relative w-full h-full bg-transparent text-white text-[35px]"><div className="absolute top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%]  "><FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon></div></div></div>
+                <div className="absolute h-full bg-transparent top-[50%] translate-y-[-50%] w-[60px] right-[0]" onClick={(e)=>{e.preventDefault();seti((i+1)%(imgdata.length))}}><div className="relative w-full h-full bg-transparent text-white text-[35px]"><div className="absolute top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%]  "><FontAwesomeIcon icon={faChevronRight}></FontAwesomeIcon></div></div></div>
                 
                 
             </div>

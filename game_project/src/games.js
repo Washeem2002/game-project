@@ -242,7 +242,7 @@ const Gameview=()=>{
                         </ul>) }
                     </div>
                     
-                    <div  className=" min-w-[150px] pl-[4px]  text-center  static border-2 rounded-[3px] mt-5 " onClick={()=>{setSearchParams({"gen":"","sort":0})}}>
+                    <div  className=" min-w-[150px] pl-[4px]  text-center  static border-2 rounded-[3px] mt-5 " onClick={()=>{setSearchParams({"gen":"","sort":0,"price":10000})}}>
                        CLEAR
                     </div>
                 </ul>

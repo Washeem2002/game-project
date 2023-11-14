@@ -36,6 +36,7 @@ const Gameview=()=>{
      const  [click,setclick]=useState(false); 
      const  [sort,setsort]=useState(0);
      const  [price,setprice]=useState(10000);
+     const  [mess,setmess]=useState(true)
        
      useEffect(()=>{
         if(click){
@@ -81,6 +82,8 @@ const Gameview=()=>{
         {
             seton5(true);
         }
+        setmess(true);
+        setdata([]);
         let gen=asd.get("gen").split(" ")||[];
         let sort=asd.get("sort");
         let price=asd.get("price");
@@ -89,7 +92,10 @@ const Gameview=()=>{
             method:"POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({gen:gen,sort:sort,price:price})
-         }).then((res)=>{return res.json()}).then((res)=>{setdata(res)})
+         }).then((res)=>{return res.json()}).then((res)=>{
+          setdata(res);
+          setmess(false) 
+        })
          if(asd.get("gen")==="action")
          {
             setact(true)
@@ -201,7 +207,7 @@ const Gameview=()=>{
             </div>)
             }))
             }    
-               {(data.length==0) &&(<div className=" flex justify-center item-center text-center text-[25px]"><h1>Result not found</h1></div>)}
+               {(data.length===0) &&(<div className=" flex justify-center item-center text-center text-[25px]"><h1>{(!mess && data.length===0)?"Result not found...":"Loading..."}</h1></div>)}
         </div>
         
         { (!on5 )&&(<div className="filter w-full h-fit max-w-[909px] lg:max-w-[305px] bg-black flex-1   lg:w-full border-2 rounded-[7px] p-2">

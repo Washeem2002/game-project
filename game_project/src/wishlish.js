@@ -13,11 +13,12 @@ const Wishlist=()=>{
   const{mass,setmass}=useContext(Mycontext);
     const[data2,setdata2]=useState([]);
     const navigate=useNavigate();
+    const[mess,setmess]=useState(true);
    
     useEffect(()=>{
         
         const user_id=JSON.parse(localStorage.getItem("tokken1"))._id;;
-  
+        setdata2([]);
         fetch("/api/wishlist_find",{
           method:"POST",
           headers:{
@@ -34,7 +35,8 @@ const Wishlist=()=>{
         }
         else
         {
-          setdata2(result)
+          setdata2(result);
+          setmess(false);
         }
         
         
@@ -48,6 +50,7 @@ const Wishlist=()=>{
     
      const remove_wishlist=(id)=>{
         const user_id=JSON.parse(localStorage.getItem("tokken1"))._id;;
+        
         fetch("/api/wishlist_remove",{
           method:"POST",
           headers:{
@@ -98,7 +101,8 @@ const Wishlist=()=>{
                 <div className="absolute top-[-5px] right-[5px] text-[30px]" onClick={()=>{remove_wishlist(arr._id)}}><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></div>
             </div>)
             }))
-            }         
+            }   
+             {(data2.length===0) &&(<div className=" flex justify-center item-center text-center text-[25px]"><h1>{(!mess && data2.length===0)?"Wishlist is Empty":"Loading..."}</h1></div>)}       
         </div>
        
         </div>

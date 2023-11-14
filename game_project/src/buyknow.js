@@ -1,23 +1,24 @@
-import {React,useContext,useEffect,useState} from "react";
+import {React,useEffect,useState} from "react";
 import "./slide.css";
 import "./card.css";
-import { Mycontext } from "./context/context";
+
 
 
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark,faStar} from "@fortawesome/free-solid-svg-icons";
+import { faStar} from "@fortawesome/free-solid-svg-icons";
 import { Link ,useNavigate} from "react-router-dom";
 
 const Buyknow=()=>{
     const navigate=useNavigate();
     const[data2,setdata2]=useState([])
     const[rate,setrate]=useState(0);
+    const[mess,setmess]=useState(true);
    
     useEffect(()=>{
         
         const data=JSON.parse(localStorage.getItem("tokken1"))._id;
-  
+        setmess([]);
         fetch("/api/buyknow",{
           method:"POST",
           headers:{
@@ -25,7 +26,7 @@ const Buyknow=()=>{
           },body:JSON.stringify({
             data
           })
-        }).then((arr)=>{return arr.json()}).then((arr)=>{setdata2(arr);setrate(arr.totalstar===0?0:Math.round(arr.totalstar/arr.totalreview))})
+        }).then((arr)=>{return arr.json()}).then((arr)=>{setdata2(arr);setmess(false);setrate(arr.totalstar===0?0:Math.round(arr.totalstar/arr.totalreview))})
 
        
      },[])
@@ -68,7 +69,8 @@ const Buyknow=()=>{
                 </div>
             </div>)
             }))
-            }         
+            }
+             {(data2.length===0) &&(<div className=" flex justify-center item-center text-center text-[25px]"><h1>{(!mess && data2.length===0)?"You are not buy anything yet ":"Loading..."}</h1></div>)}          
         </div>
        
         </div>

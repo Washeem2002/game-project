@@ -16,12 +16,14 @@ const Cart=()=>{
      const [price,setprice]=useState(0);
      const [actprice,setactprice]=useState(0);
      const navigate=useNavigate();
+     const[mess,setmess]=useState(true);
      
      useEffect(()=>{
         
         const id=JSON.parse(localStorage.getItem("tokken1"));
         
-  
+        
+        setdata2([]);
         fetch("/api/cart_find",{
           method:"POST",
           headers:{
@@ -41,7 +43,10 @@ const Cart=()=>{
           else
           {
           
-          setdata2(result);}
+          setdata2(result);
+          setmess(false);
+        
+        }
          
         
         
@@ -155,7 +160,8 @@ const Cart=()=>{
                 <div className="absolute top-[-5px] right-[5px] text-[30px]" onClick={()=>{remove_cart(arr._id)}}><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></div>
             </div>)
             }))
-            }         
+            }
+               {(data2.length===0) &&(<div className=" flex justify-center item-center text-center text-[25px]"><h1>{(!mess && data2.length===0)?"Cart is Empty":"Loading..."}</h1></div>)}        
         </div>
         <div className=" w-full h-fit mt-[30px] md:max-w-[300px] md:mt-0 bg-black  border-2 rounded-[10px] p-2">
         

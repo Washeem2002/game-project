@@ -4,9 +4,9 @@ import "./slide.css"
 import "./card.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faUser,faStar,faChevronLeft,faChevronRight,faThumbsUp,faThumbsDown} from "@fortawesome/free-solid-svg-icons";
-import star from "./testim/star.jpg"
+
 import Slide from "./slider";
-import Brand from "./brand";
+
 import { useParams,useNavigate } from "react-router-dom";
 import { Mycontext } from "./context/context";
 
@@ -25,7 +25,7 @@ const Buy=()=>{
     const[rview,setrview]=useState([]);
     const[rate,setrate]=useState(0);
 
-
+  
     
     useEffect(()=>{
       fetch("/api/gamefind",{
@@ -54,7 +54,7 @@ const Buy=()=>{
          
           localStorage.clear('tokken1');
           setmass("invalid user..");
-            navigate("/login");
+            navigate("/login",{ replace: true });
         }
         else
         {
@@ -83,14 +83,16 @@ const Buy=()=>{
         {
           localStorage.clear('tokken1');
           setmass("invalid user..");
-            navigate("/login");
+            navigate("/login",{ replace: true });
         }
       })
     }
     
     const buy=(id)=>{
-      const data=JSON.parse(localStorage.getItem("tokken1"))._id;
-      setmass("please wait..");
+     const data2=localStorage.getItem('tokken1');
+      if(data2){
+        const data=JSON.parse(localStorage.getItem("tokken1"))._id;
+        setmass("please wait..");
       fetch("/api/buy",{
          method:"POST",
          headers:{
@@ -106,13 +108,18 @@ const Buy=()=>{
          {
           localStorage.clear('tokken1');
           setmass("invalid user..");
-            navigate("/login");
+            navigate("/login",{ replace: true });
          }
 
          }
          
          
          )
+      }else{
+        setmass("invalid user..");
+       navigate("/login",{ replace: true })
+      }
+      
     }
     
     

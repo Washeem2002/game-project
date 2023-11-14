@@ -22,7 +22,7 @@ const ALLRoutes=()=>{
             <Route path="/buy/:pid" element={<Buy/>}></Route>
             <Route path="/genra" element={<Gameview/>}></Route>
             <Route path="/wishlist" element={<Wishlist></Wishlist>}></Route>
-            <Route path="/login" element={<Login/>}></Route>
+            <Route path="/login" exact element={<Login/>}></Route>
             <Route path="/register" element={<Register></Register>}></Route>
             <Route path="/brand/:id" element={<BrandView></BrandView>}></Route>
             <Route path="/search" element={<SearchView></SearchView>}></Route> 

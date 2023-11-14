@@ -17,15 +17,17 @@ const SearchView=()=>{
    const navigate=useNavigate();
     const location = useLocation();
      const [data,setdata]=useState([]);
-  
+     const[mess,setmess]=useState(true)
      useEffect(()=>{
         const limit=10000;
         const field=asd.get("field");
+        setdata([]);
+        setmess(true);
         fetch("/api/search",{
             method:"POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({field,limit})
-         }).then((result)=>{return result.json()}).then((result)=>{setdata(result)})
+         }).then((result)=>{return result.json()}).then((result)=>{setdata(result);setmess(false)})
       },[location])
      
       
@@ -107,7 +109,8 @@ const SearchView=()=>{
                 </div>
             </div>)
             }))
-            }    
+            }
+             {(data.length===0) &&(<div className="w-full flex justify-center item-center text-center text-[25px]"><h1>{(!mess && data.length===0)?"Search not Found":"Loading..."}</h1></div>)}     
               
         </div>
         

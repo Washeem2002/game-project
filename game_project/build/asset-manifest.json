@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b643d531.css",
-    "main.js": "/static/js/main.e55fda19.js",
+    "main.js": "/static/js/main.8628e096.js",
     "static/media/Star Wars Jedi Survivor.png": "/static/media/Star Wars Jedi Survivor.cb46686b9307730f1200.png",
     "static/media/EA_logo_logotype.png": "/static/media/EA_logo_logotype.7b4826cee79f7a1b26a4.png",
     "static/media/fortnite-png-27038.png": "/static/media/fortnite-png-27038.351e3f087ea5fd419267.png",
@@ -15,10 +15,10 @@
     "static/media/bill.avif": "/static/media/bill.85031a2d20382830417f.avif",
     "index.html": "/index.html",
     "main.b643d531.css.map": "/static/css/main.b643d531.css.map",
-    "main.e55fda19.js.map": "/static/js/main.e55fda19.js.map"
+    "main.8628e096.js.map": "/static/js/main.8628e096.js.map"
   },
   "entrypoints": [
     "static/css/main.b643d531.css",
-    "static/js/main.e55fda19.js"
+    "static/js/main.8628e096.js"
   ]
 }

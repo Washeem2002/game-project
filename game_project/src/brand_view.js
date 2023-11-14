@@ -19,6 +19,7 @@ const BrandView=()=>{
      const [data,setdata]=useState([]);
      
      
+     
      useEffect(()=>{
       fetch(`/api/brand?id=${id}`,{
         method:"GET",
@@ -107,7 +108,8 @@ const BrandView=()=>{
                 </div>
             </div>)
             }))
-            }    
+            }
+             {(data.length===0) &&(<div className="w-full flex justify-center item-center text-center text-[25px]"><h1>Loading...</h1></div>)}     
               
         </div>
         

@@ -38,9 +38,9 @@ const Gameview=()=>{
      const  [price,setprice]=useState(10000);
      const  [mess,setmess]=useState(true)
        
-     useEffect(()=>{
-        if(click){
-        let gen="";
+  
+   const submit=()=>{
+    let gen="";
         if(act)
         {
             gen=gen+("action ");
@@ -63,25 +63,37 @@ const Gameview=()=>{
         {
             gen+="horror"
         }
-        const sort=asd.get("sort");
-        const price=asd.get("price");
+        seton2(false);
+        seton3(false);
+        seton4(false);
+        window.scrollTo(0, 0);
          // Update the query parameter
-         setSearchParams({"gen": gen,"sort":sort,"price":10000})}
-     },[act,adv,spt,hor,rpg,sho])
-     useEffect(()=>{
-        console.log(asd.get("gen"))
-        setSearchParams({"gen": asd.get("gen"),"sort":sort,"price":asd.get("price")});
-     },[sort])
-     useEffect(()=>{
-      console.log(asd.get("gen"))
-      setSearchParams({"gen": asd.get("gen"),"sort":asd.get("sort"),"price":price});
-   },[price])
+         setSearchParams({"gen": gen,"sort":sort,"price":price})
+   }
+
+
+   //clear filter
+   const clear=()=>{
+    setact(false);
+    setadv(false);
+    setspt(false);
+    setsho(false);
+    setrpg(false);
+    sethor(false);
+    setsort(0);
+    setprice(10000);
+    
+    setSearchParams({"gen":"","sort":0,"price":10000});
+
+   }
 
      useEffect(()=>{
+        
         if(window.innerWidth<1024)
         {
             seton5(true);
         }
+
         setmess(true);
         setdata([]);
         let gen=asd.get("gen").split(" ")||[];
@@ -182,7 +194,7 @@ const Gameview=()=>{
     
     return (
         <div className="conatiner-slider w-full flex flex-col h-full min-h-screen items-center  pt-[17px] overflow-hidden  text-white" >
-        <div className="gent  w-full sm:max-w-[648px] lg:max-w-[1209px] mb-8 flex  bg-black"><div className="naam flex flex-1 text-[20px] ml-2 lg:ml-0 lg:max-w-[909px] justify-between "><div>Games</div><div className=" hidden  lg:mr-10 lg:block"><FontAwesomeIcon icon={faFilter} className="fa-solid fa-cart-shopping bg-transparent mr-2" />filter</div><div className="mr-2 lg:hidden" onClick={()=>{seton5(!on5);seton2(!on2);seton3(!on3);seton4(!on4);seton1(!on1);}}><FontAwesomeIcon icon={faFilter} className="fa-solid fa-cart-shopping bg-transparent mr-2" />filter</div></div></div>
+        <div className="gent  w-full sm:max-w-[648px] lg:max-w-[1209px] mb-8 flex  bg-black"><div className="naam flex flex-1 text-[20px] ml-2 lg:ml-0 lg:max-w-[909px] justify-between "><div>Games</div><div className=" hidden  lg:mr-10 lg:block"><FontAwesomeIcon icon={faFilter} className="fa-solid fa-cart-shopping bg-transparent mr-2" />filter</div><div className="mr-2 lg:hidden" onClick={()=>{seton5(!on5);seton1(!on1);}}><FontAwesomeIcon icon={faFilter} className="fa-solid fa-cart-shopping bg-transparent mr-2" />filter</div></div></div>
         <div className='gent gen2  w-full sm:max-w-[1209px] h-full flex flex-col-reverse lg:flex-row lg:justify-center  gap-x-8 bg-black relative'>
         <div  className="conti-sub w-fit h-fit lg:max-w-[909px]  grid grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 justify-center game-grid">
            {
@@ -216,39 +228,41 @@ const Gameview=()=>{
                     <li  className="w-fit mb-3 pl-3 " onClick={()=>{seton2(!on2)}}><a >GenreGenre{on2===false?<FontAwesomeIcon icon={faChevronDown} className="ml-1 text-[15px]"/>:<FontAwesomeIcon icon={faChevronUp} className="ml-1 text-[15px]"/>}</a></li>
                     <div  className=" min-w-[150px] pl-[4px] fields gen text-white  static bg-black ">
                         { (on2) && (<ul className=" flex flex-col text-[20px]/10 border-b-4 py-2">
-                        <li className={`w-full mb-3 lg:pr-5 ${(asd.get("gen")).includes("action")?"border-2 rounded-[5px]":""}` }  onClick={()=>{setclick(true);setact(!act)}}><a >Action</a></li>
+                        <li className={`w-full mb-3 lg:pr-5 ${( act)?"border-2 rounded-[5px]":""}` }  onClick={()=>{setact(!act)}}><a >Action</a></li>
                         
-                        <li className={`w-full mb-3 lg:pr-5 ${(asd.get("gen")).includes("adventure")?"border-2 rounded-[5px]":""}` } onClick={()=>{setclick(true);setadv(!adv)}}><a >Adventure</a></li>
-                        <li className={`w-full mb-3 lg:pr-5 ${(asd.get("gen")).includes("shooter")?"border-2 rounded-[5px]":""}` } onClick={()=>{setclick(true);setsho(!sho)}}><a >Shooter</a></li>
-                        <li className={`w-full mb-3 lg:pr-5 ${(asd.get("gen")).includes("sport_racing")?"border-2 rounded-[5px]":""}` } onClick={()=>{setclick(true);setspt(!spt)}}><a>Sports & Racing</a></li>
-                        <li className={`w-full mb-3 lg:pr-5 ${(asd.get("gen")).includes("horror")?"border-2 rounded-[5px]":""}` } onClick={()=>{setclick(true);sethor(!hor)}}><a >Horror</a></li>
-                        <li className={`w-full mb-3 lg:pr-5 ${(asd.get("gen")).includes("rpg")?"border-2 rounded-[5px]":""}` } onClick={()=>{setclick(true);setrpg(!rpg)}}><a >RPG</a></li>
+                        <li className={`w-full mb-3 lg:pr-5 ${( adv)?"border-2 rounded-[5px]":""}` } onClick={()=>{setadv(!adv)}}><a >Adventure</a></li>
+                        <li className={`w-full mb-3 lg:pr-5 ${( sho)?"border-2 rounded-[5px]":""}` } onClick={()=>{setsho(!sho)}}><a >Shooter</a></li>
+                        <li className={`w-full mb-3 lg:pr-5 ${( spt)?"border-2 rounded-[5px]":""}` } onClick={()=>{setspt(!spt)}}><a>Sports & Racing</a></li>
+                        <li className={`w-full mb-3 lg:pr-5 ${( hor)?"border-2 rounded-[5px]":""}` } onClick={()=>{sethor(!hor)}}><a >Horror</a></li>
+                        <li className={`w-full mb-3 lg:pr-5 ${( rpg)?"border-2 rounded-[5px]":""}` } onClick={()=>{setrpg(!rpg)}}><a >RPG</a></li>
                         </ul>) }
                     </div>
                    
                     <li  className=" w-fit  mb-3 pl-3 " onClick={(e)=>{e.preventDefault();seton3(!on3)}}>Sort{on3===false?<FontAwesomeIcon icon={faChevronDown} className="ml-1 text-[15px]"/>:<FontAwesomeIcon icon={faChevronUp} className="ml-1 text-[15px]"/>}</li>
                     <div className=" min-w-[150px] pl-[4px] fields gen off_gen static bg-black  border-stone-400">
                        { (on3)&& (<ul className=" flex flex-col text-[20px]/10 border-b-4 py-2">
-                        <li className={`w-full mb-3 lg:mr-5 ${(asd.get("sort"))==="1"?"border-2 rounded-[5px]":""} `} onClick={()=>{sort===1?setsort(0):setsort(1)}}><a >Price High to Low</a></li>
-                        <li className={`w-full mb-3 lg:mr-5 ${(asd.get("sort"))==="2"?"border-2 rounded-[5px]":""} `} onClick={()=>{sort===2?setsort(0):setsort(2)}}><a >Price Low to High</a></li>
-                        <li className={`w-full mb-3 lg:mr-5 ${(asd.get("sort"))==="3"?"border-2 rounded-[5px]":""} `} onClick={()=>{sort===3?setsort(0):setsort(3)}}><a >Free</a></li>
-                        <li className={`w-full mb-3 lg:mr-5 ${(asd.get("sort"))==="4"?"border-2 rounded-[5px]":""} `} onClick={()=>{sort===4?setsort(0):setsort(4)}}><a >Discounted</a></li>
+                        <li className={`w-full mb-3 lg:mr-5 ${sort===1?"border-2 rounded-[5px]":""} `} onClick={()=>{sort===1?setsort(0):setsort(1)}}><a >Price High to Low</a></li>
+                        <li className={`w-full mb-3 lg:mr-5 ${sort===2?"border-2 rounded-[5px]":""} `} onClick={()=>{sort===2?setsort(0):setsort(2)}}><a >Price Low to High</a></li>
+                        <li className={`w-full mb-3 lg:mr-5 ${sort===3?"border-2 rounded-[5px]":""} `} onClick={()=>{sort===3?setsort(0):setsort(3)}}><a >Free</a></li>
+                        <li className={`w-full mb-3 lg:mr-5 ${sort===4?"border-2 rounded-[5px]":""} `} onClick={()=>{sort===4?setsort(0):setsort(4)}}><a >Discounted</a></li>
                         </ul>) }
                     </div>
                     <li  className="w-fit mb-3 pl-3"  onClick={(e)=>{e.preventDefault();seton4(!on4)}}>Price {on4===false?<FontAwesomeIcon icon={faChevronDown} className="ml-1 text-[15px]"/>:<FontAwesomeIcon icon={faChevronUp} className="ml-1 text-[15px]"/>} </li>
                     <div  className=" min-w-[150px] pl-[4px] fields gen  static bg-black ">
                         {(on4) && (<ul className=" flex flex-col text-[20px]/10 ">
-                        <li className={`w-full mb-3 lg:mr-5 ${(asd.get("price"))==="1000"?"border-2 rounded-[5px]":""} `} onClick={()=>{price===1000?setprice(10000):setprice(1000)}}><a >Under Rs.1000</a></li>
+                        <li className={`w-full mb-3 lg:mr-5 ${price===1000?"border-2 rounded-[5px]":""} `} onClick={()=>{price===1000?setprice(10000):setprice(1000)}}><a >Under Rs.1000</a></li>
                         
-                        <li className={`w-full mb-3 lg:mr-5 ${(asd.get("price"))==="2000"?"border-2 rounded-[5px]":""} `} onClick={()=>{price===2000?setprice(10000):setprice(2000)}}><a >Under Rs.2000</a></li>
-                        <li className={`w-full mb-3 lg:mr-5 ${(asd.get("price"))==="3000"?"border-2 rounded-[5px]":""} `} onClick={()=>{price===3000?setprice(10000):setprice(3000)}}><a >Under Rs.3000</a></li>
-                        <li className={`w-full mb-3 lg:mr-5 ${(asd.get("price"))==="4000"?"border-2 rounded-[5px]":""} `} onClick={()=>{price===4000?setprice(10000):setprice(4000)}}><a >Under Rs.4000</a></li>
+                        <li className={`w-full mb-3 lg:mr-5 ${price===2000?"border-2 rounded-[5px]":""} `} onClick={()=>{price===2000?setprice(10000):setprice(2000)}}><a >Under Rs.2000</a></li>
+                        <li className={`w-full mb-3 lg:mr-5 ${price===3000?"border-2 rounded-[5px]":""} `} onClick={()=>{price===3000?setprice(10000):setprice(3000)}}><a >Under Rs.3000</a></li>
+                        <li className={`w-full mb-3 lg:mr-5 ${price===4000?"border-2 rounded-[5px]":""} `} onClick={()=>{price===4000?setprice(10000):setprice(4000)}}><a >Under Rs.4000</a></li>
                         
 
                         </ul>) }
                     </div>
-                    
-                    <div  className=" min-w-[150px] pl-[4px]  text-center  static border-2 rounded-[3px] mt-5 " onClick={()=>{setSearchParams({"gen":"","sort":0,"price":10000})}}>
+                    <div  className=" min-w-[150px] pl-[4px]  text-center  static border-2 rounded-[3px] mt-5 " onClick={submit}>
+                       Submit
+                    </div>
+                    <div  className=" min-w-[150px] pl-[4px]  text-center  static border-2 rounded-[3px] mt-5 " onClick={clear}>
                        CLEAR
                     </div>
                 </ul>

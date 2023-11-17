@@ -108,34 +108,19 @@ const Gameview=()=>{
           setdata(res);
           setmess(false) 
         })
-         if(asd.get("gen")==="action")
-         {
-            setact(true)
-         }
-         else if(asd.get("gen")==="adventure")
-         {
-            setadv(true)
-         }
-         else if(asd.get("gen")==="sport_racing ")
-         {
-            setadv(true)
-         }
-         else if(asd.get("gen")==="sport_racing")
-         {
-            setadv(true)
-         }
-         else if(asd.get("gen")==="shooter")
-         {
-            setsho(true)
-         }
-         else if(asd.get("gen")==="rpg")
-         {
-            setrpg(true)
-         }
-         else if(asd.get("gen")==="horror")
-         {
-            sethor(true)
-         }
+        
+        const genk=asd.get("gen");
+
+        setact(genk.includes("action")?true:false);
+        setadv(genk.includes("adventure")?true:false);
+        setspt(genk.includes("sport_racing")?true:false);
+        setsho(genk.includes("shooter")?true:false);
+        setrpg(genk.includes("rpg")?true:false);
+        sethor(genk.includes("horror")?true:false);
+        setprice((Number)(asd.get("price")));
+        setsort((Number)(asd.get("sort")));
+        
+         
          
          console.log(act)
      },[location])

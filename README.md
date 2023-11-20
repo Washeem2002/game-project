@@ -7,7 +7,9 @@ Website_Link(Vercel):https://game-cart-ojg7.onrender.com
   <li>React js</li>
   <li>Node js</li>
   <li>Express js</li>
-  <li>Mongo db</li>
+  <li>Mongo db</li
+  <li>Tailwind css</li
+  
 </ul>
 
 # Feature

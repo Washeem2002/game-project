@@ -96,8 +96,16 @@ const Slide=({genre})=>{
     }
   useEffect(()=>{
     
-    const data=localStorage.getItem('tokken1');
-    if(data){
+    // const data=localStorage.getItem('tokken1');
+    // if(data){
+    // fetch("/fetch",{
+    //   method:"POST",
+    //   headers:{
+    //     'Content-Type':"application/json"
+    //   },body:JSON.stringify({
+    //     genre
+    //   })
+    // }).then((resu)=>{return resu.json()}).then((resu)=>{setdata(resu)});}
     fetch("/fetch",{
       method:"POST",
       headers:{
@@ -105,13 +113,14 @@ const Slide=({genre})=>{
       },body:JSON.stringify({
         genre
       })
-    }).then((resu)=>{return resu.json()}).then((resu)=>{setdata(resu)});}
+    }).then((resu)=>{return resu.json()}).then((resu)=>{setdata(resu)});
   },[])
     
   const cart =(id)=>{
       setmass("adding to the cart please wait..");
-      const data=JSON.parse(localStorage.getItem("tokken1"))._id;
-
+      
+      const data=JSON.parse(localStorage.getItem("tokken1"))===null?null:JSON.parse(localStorage.getItem("tokken1"))._id;
+      if(data){
       fetch("/api/cart",{
         method:"POST",
         headers:{
@@ -131,12 +140,16 @@ const Slide=({genre})=>{
         {
            setmass("Game added to the cart");
         }
-      })
+      })}
+      else
+      {
+        setmass("Sorry!! Please login First");
+      }
     }
     const wishlish =(id)=>{
-      
-      const data=JSON.parse(localStorage.getItem("tokken1"))._id;
-
+      setmass("adding to the Wishlist please wait..");
+      const data=JSON.parse(localStorage.getItem("tokken1"))===null?null:JSON.parse(localStorage.getItem("tokken1"))._id;
+      if(data){
       fetch("/api/wishlist",{
         method:"POST",
         headers:{
@@ -156,7 +169,11 @@ const Slide=({genre})=>{
           setmass("invalid user..");
             navigate("/login");
         }
-      })
+      })}
+      else
+      {
+        setmass("Sorry!! Please login First");
+      }
     }
     
     if(data.length>3)

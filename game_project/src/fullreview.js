@@ -24,7 +24,7 @@ const FullReview=()=>{
     const[rview,setrview]=useState([]);
     const[rate,setrate]=useState(0);
 
-
+    const{mass,setmass}=useContext(Mycontext);
     
     useEffect(()=>{
         const rev="cart";
@@ -66,7 +66,7 @@ const FullReview=()=>{
                <div className="star text-white ml-2  bg-teal-700 py-[1px] px-[6px] rounded">{rate}<FontAwesomeIcon icon={ faStar}   /></div>
 
                </div>
-               <a><button className="text-white ml-2  bg-teal-700 py-[2px] px-[4px] rounded" onClick={()=>{navigate(`/review?id=${data._id}&name=${data.name}&rate=${rate}`)}}>Rate product</button></a>
+               <a><button className="text-white ml-2  bg-teal-700 py-[2px] px-[4px] rounded" onClick={()=>{JSON.parse(localStorage.getItem("tokken1"))===null?setmass("Sorry!! Please login First"):navigate(`/review?id=${data._id}&name=${data.name}&rate=${rate}`)}}>Rate product</button></a>
                
             
             

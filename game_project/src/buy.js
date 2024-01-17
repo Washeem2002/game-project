@@ -39,8 +39,9 @@ const Buy=()=>{
     },[id])
     const cart =(id)=>{
       setmass("adding to the cart please wait..");
-      const data=JSON.parse(localStorage.getItem("tokken1"))._id;
-
+      
+      const data=JSON.parse(localStorage.getItem("tokken1"))===null?null:JSON.parse(localStorage.getItem("tokken1"))._id;
+      if(data){
       fetch("/api/cart",{
         method:"POST",
         headers:{
@@ -54,18 +55,23 @@ const Buy=()=>{
          
           localStorage.clear('tokken1');
           setmass("invalid user..");
-            navigate("/login",{ replace: true });
+            navigate("/login");
         }
         else
         {
            setmass("Game added to the cart");
         }
-      })
+      })}
+      else
+      {
+        setmass("Sorry!! Please login First");
+      }
     }
     const wishlish =(id)=>{
       
-      const data=JSON.parse(localStorage.getItem("tokken1"))._id;
-
+      setmass("adding to the Wishlist please wait..");
+      const data=JSON.parse(localStorage.getItem("tokken1"))===null?null:JSON.parse(localStorage.getItem("tokken1"))._id;
+      if(data){
       fetch("/api/wishlist",{
         method:"POST",
         headers:{
@@ -83,9 +89,13 @@ const Buy=()=>{
         {
           localStorage.clear('tokken1');
           setmass("invalid user..");
-            navigate("/login",{ replace: true });
+            navigate("/login");
         }
-      })
+      })}
+      else
+      {
+        setmass("Sorry!! Please login First");
+      }
     }
     
     const buy=(id)=>{
@@ -116,8 +126,7 @@ const Buy=()=>{
          
          )
       }else{
-        setmass("invalid user..");
-       navigate("/login",{ replace: true })
+        setmass("Sorry!! Please login First");
       }
       
     }
@@ -228,7 +237,7 @@ TEXT: Chinese - Simplified, Chinese - Traditional, Czech, Dutch, Greek, Hungaria
                <div className="star text-white ml-2  bg-teal-700 py-[1px] px-[6px] rounded">{rate}<FontAwesomeIcon icon={ faStar}   /></div>
 
                </div>
-               <a><button className="text-white ml-2  bg-teal-700 py-[2px] px-[4px] rounded" onClick={()=>{navigate(`/review?id=${data._id}&name=${data.name}&rate=${rate}`)}}>Rate product</button></a>
+               <a><button className="text-white ml-2  bg-teal-700 py-[2px] px-[4px] rounded" onClick={()=>{JSON.parse(localStorage.getItem("tokken1"))===null?setmass("Sorry!! Please login First"):navigate(`/review?id=${data._id}&name=${data.name}&rate=${rate}`)}}>Rate product</button></a>
                
             
             

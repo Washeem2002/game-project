@@ -127,8 +127,9 @@ const Gameview=()=>{
       
      const cart =(id)=>{
       setmass("adding to the cart please wait..");
-      const data=JSON.parse(localStorage.getItem("tokken1"))._id;
-
+      
+      const data=JSON.parse(localStorage.getItem("tokken1"))===null?null:JSON.parse(localStorage.getItem("tokken1"))._id;
+      if(data){
       fetch("/api/cart",{
         method:"POST",
         headers:{
@@ -148,12 +149,17 @@ const Gameview=()=>{
         {
            setmass("Game added to the cart");
         }
-      })
+      })}
+      else
+      {
+        setmass("Sorry!! Please login First");
+      }
     }
     const wishlist =(id)=>{
       
-      const data=JSON.parse(localStorage.getItem("tokken1"))._id;
-
+      setmass("adding to the Wishlist please wait..");
+      const data=JSON.parse(localStorage.getItem("tokken1"))===null?null:JSON.parse(localStorage.getItem("tokken1"))._id;
+      if(data){
       fetch("/api/wishlist",{
         method:"POST",
         headers:{
@@ -173,7 +179,11 @@ const Gameview=()=>{
           setmass("invalid user..");
             navigate("/login");
         }
-      })
+      })}
+      else
+      {
+        setmass("Sorry!! Please login First");
+      }
     }
    
     

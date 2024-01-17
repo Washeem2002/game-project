@@ -16,7 +16,7 @@ const Toast=()=>{
     },[mass]);
     
     return(
-        <>{(mass.length!=0)&&(<div className={`w-[270px] h-[40px]  absolute right-[50%] translate-x-[50%] z-100 top-[50px] ${(mass.includes("removed"))||((mass.includes("check"))||(mass.includes("please")))?"bg-red-500":"bg-green-500"} rounded`}>
+        <>{(mass.length!=0)&&(<div className={`w-[270px] h-[40px]  absolute right-[50%] translate-x-[50%] z-100 top-[50px] ${(mass.includes("removed"))||((mass.includes("check"))||(mass.includes("please"))||(mass.includes("Please")))?"bg-red-500":"bg-green-500"} rounded`}>
             <div className="w-full h-full flex flex-1 px-2 ">
                 <div className="w-full h-full text-[15px] text-black flex  flex items-center">
 

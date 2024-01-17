@@ -21,14 +21,14 @@ const Home=()=>{
     const[mstart,setmstart]=useState(null);
     const[mend,setmend]=useState(null);
     const[idx,setidx]=useState(0);
-    useEffect(()=>{
-        const data=localStorage.getItem('tokken1');
-           if(data){
+    // useEffect(()=>{
+    //     const data=localStorage.getItem('tokken1');
+    //        if(data){
         
-           }else{
-            navigate("/login")
-           }
-     },[])
+    //        }else{
+    //         navigate("/login")
+    //        }
+    //  },[])
     useEffect(()=>{
         const id= setTimeout(()=>{
              setidx((idx+1)%(data.length))

@@ -30,10 +30,10 @@ const Review=()=>{
 
     const review=(e)=>{
         e.preventDefault();
-        const id1=JSON.parse(localStorage.getItem("tokken1"))._id;
+        const id1=JSON.parse(localStorage.getItem("tokken1"))===null?null:JSON.parse(localStorage.getItem("tokken1"))._id;
         
         const star=sstar; 
-        
+        if(id1!==null){
         fetch("/review",{
            method:"POST",
            headers:{
@@ -42,11 +42,11 @@ const Review=()=>{
              id1,id2,star,title,view
            })
          }).then((result)=>{return result.json()}).then((result)=>{
-           if(result.status=="true")
+           if(result.status==="true")
            {
             setmass("Thanks for Rating the Game");
            }
-           else if(result.status=="updated")
+           else if(result.status==="updated")
            {
             setmass("Review has beed updated")
            }
@@ -57,7 +57,10 @@ const Review=()=>{
            navigate(-1);
 
 
-         })
+         })}
+         else{
+          setmass("Sorry!! Please login First");
+         }
       }
 return(
 <>

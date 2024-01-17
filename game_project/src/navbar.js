@@ -177,10 +177,10 @@ const Navbar=()=>{
         
            
             
-            <form ref={menuref8} onSubmit={(e)=>{e.preventDefault();navigate(`/search?field=${searchvar}`);setsearchcon(false);searchdata([]);setsearchvar("")}} className="search mr-[6px] text-[15px] w-[300px] relative sm:text-lg hidden sm:block"><input type="text" placeholder="Search..." className="bg-white border-2 border-red-900 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500   block w-full p-1.5 pr-[29px] dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none" onChange={(e)=>{searchfound(e)}}></input><FontAwesomeIcon icon={faSearch} className="w-[15px] h-[15px] absolute right-[10px] top-[50%] translate-y-[-50%] "></FontAwesomeIcon>
+            <form ref={menuref8} onSubmit={(e)=>{e.preventDefault();navigate(`/search?field=${searchvar}`);setsearchcon(false);searchdata([]);setsearchvar("")}} className="search mr-[10px] text-[15px] w-[300px] relative sm:text-lg hidden sm:block"><input type="text" placeholder="Search..." className="bg-white border-2 border-red-900 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500   block w-full p-1.5 pr-[29px] dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none" onChange={(e)=>{searchfound(e)}}></input><FontAwesomeIcon icon={faSearch} className="w-[15px] h-[15px] absolute right-[10px] top-[50%] translate-y-[-50%] "></FontAwesomeIcon>
            {(searchcon) && (<div className="absolute w-full  h-fit bg-white ">
                 
-                {(searchdata.length!=0) && (<>{(searchdata.map((arr,i)=>{return <div onClick={()=>{navigate(`/buy/${arr._id}`);setsearchcon(false);searchdata([]);setsearchvar("")}} className="w-full py-[10px] px-[5px]  flex border-b-2 border-black ">
+                {(searchdata.length!==0) && (<>{(searchdata.map((arr,i)=>{return <div onClick={()=>{navigate(`/buy/${arr._id}`);setsearchcon(false);searchdata([]);setsearchvar("")}} className="w-full py-[10px] px-[5px]  flex border-b-2 border-black ">
                      <div className="card-img-cont relative w-fit shrink-0 rounded-[4px]  ">
                     <img className=" w-[50px] h-[70px]   object-fit rounded-[2px] " src={`${arr.img}`}/>
                     </div>
@@ -195,9 +195,11 @@ const Navbar=()=>{
              </div>)
                 }                
                 </div>)}</form>
-            <div className="cart text-[15px] mr-[6px] sm:text-lg block sm:hidden" onClick={()=>{setsearch(!search)}}> <button className="  sm:border-2  px-[6px] py-[6px] sm:py-[7px] sm:px-[7px]  flex items-center text-[14px] rounded-full "><FontAwesomeIcon icon={faSearch} className="w-[20px] h-[20px] " ></FontAwesomeIcon><span></span></button></div>
-            <Link to="/cart"><div className="cart text-[15px] mr-[6px] sm:text-lg "><button className="  sm:border-2  px-[6px] py-[6px] sm:py-[7px] sm:px-[7px]  flex items-center text-[14px] rounded-full "><FontAwesomeIcon icon={faCartShopping} className="w-[20px] h-[20px] " ></FontAwesomeIcon><span></span></button></div></Link>
-            <div className="cart text-[15px] sm:text-lg " ><button ref={menuref6} className="  sm:border-2  px-[6px] py-[6px] sm:py-[7px] sm:px-[7px]  flex items-center text-[14px] rounded-full bg-black" onClick={acc}><FontAwesomeIcon icon={faUser} className="w-[20px] h-[20px] text-white" ></FontAwesomeIcon><span></span></button></div>
+            <div className="cart text-[15px] mr-[10px] sm:text-lg block sm:hidden" onClick={()=>{setsearch(!search)}}> <button className="  sm:border-2  px-[6px] py-[6px] sm:py-[7px] sm:px-[7px]  flex items-center text-[14px] rounded-full "><FontAwesomeIcon icon={faSearch} className="w-[20px] h-[20px] " ></FontAwesomeIcon><span></span></button></div>
+            <Link to="/cart"><div className="cart text-[15px] mr-[10px] sm:text-lg "><button className="  sm:border-2  px-[6px] py-[6px] sm:py-[7px] sm:px-[7px]  flex items-center text-[14px] rounded-full "><FontAwesomeIcon icon={faCartShopping} className="w-[20px] h-[20px] " ></FontAwesomeIcon><span></span></button></div></Link>
+           {(JSON.parse(localStorage.getItem("tokken1"))!==null) ?<div className="cart text-[15px] sm:text-lg " ><button ref={menuref6} className=" border-black sm:border-2  px-[6px] py-[6px] sm:py-[7px] sm:px-[7px]  flex items-center text-[14px] rounded-full bg-black" onClick={acc}><FontAwesomeIcon icon={faUser} className="w-[20px] h-[20px] text-white" ></FontAwesomeIcon><span></span></button></div>: <div onClick={()=>{navigate("/login")}} > <button class="flex text-center bg-transparent sm:hover:bg-teal-600 text-black font-semibold sm:hover:text-white py-[4px] px-4 border-2 border-black sm:hover:border-transparent rounded">
+  Login
+</button></div>}
             { (on4) && (<div ref={menuref7} className=" min-w-[150px] pl-[4px] fields gen off_gen  bg-white absolute top-[40px] lg:top-[47px] right-0">
                         <ul className=" flex flex-col text-[20px]/10 ">
                         <div className="w-fit mb-3 lg:mr-5 border-b-1" >welcome! {JSON.parse(localStorage.getItem("tokken1")).name}</div>

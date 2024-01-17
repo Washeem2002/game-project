@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.087d0e72.css",
-    "main.js": "/static/js/main.5a1c330d.js",
+    "main.css": "/static/css/main.21042aee.css",
+    "main.js": "/static/js/main.ef8f5f06.js",
     "static/media/Star Wars Jedi Survivor.png": "/static/media/Star Wars Jedi Survivor.cb46686b9307730f1200.png",
     "static/media/EA_logo_logotype.png": "/static/media/EA_logo_logotype.7b4826cee79f7a1b26a4.png",
     "static/media/fortnite-png-27038.png": "/static/media/fortnite-png-27038.351e3f087ea5fd419267.png",
@@ -14,11 +14,11 @@
     "static/media/2kgames.avif": "/static/media/2kgames.b76f57e30dcea85f74f3.avif",
     "static/media/bill.avif": "/static/media/bill.85031a2d20382830417f.avif",
     "index.html": "/index.html",
-    "main.087d0e72.css.map": "/static/css/main.087d0e72.css.map",
-    "main.5a1c330d.js.map": "/static/js/main.5a1c330d.js.map"
+    "main.21042aee.css.map": "/static/css/main.21042aee.css.map",
+    "main.ef8f5f06.js.map": "/static/js/main.ef8f5f06.js.map"
   },
   "entrypoints": [
-    "static/css/main.087d0e72.css",
-    "static/js/main.5a1c330d.js"
+    "static/css/main.21042aee.css",
+    "static/js/main.ef8f5f06.js"
   ]
 }
